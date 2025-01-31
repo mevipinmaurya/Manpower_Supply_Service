@@ -15,7 +15,7 @@ const WhyChooseUs = () => {
             <p className='text-lg mb-10 text-gray-300 text-center w-[60%]'>Experience the difference with our comprehensive manpower solutions backed by years of expertise and professional excellence.</p>
 
             <div className='w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-                <div className='flex flex-col bg-gray-700 shadow rounded-xl hover:scale-105 p-6'>
+                <div className='flex flex-col bg-gray-700 shadow rounded-xl hover:bg-gray-600 hover:scale-105 p-6'>
                     <div className='rounded-full p-1'>
                         <GrUserManager size={60} className='bg-[#2563EB] text-white p-2 rounded-full' />
                     </div>
@@ -25,7 +25,7 @@ const WhyChooseUs = () => {
                     <p className='flex items-center gap-1 text-lg text-white'> <IoIosCheckmarkCircleOutline className='text-[#2563EB]  text-2xl font-bold' /> Regular Training Programs</p>
                 </div>
 
-                <div className='flex flex-col bg-gray-700 shadow rounded-xl hover:scale-105 p-6'>
+                <div className='flex flex-col bg-gray-700 hover:bg-gray-600  shadow rounded-xl hover:scale-105 p-6'>
                     <div className='rounded-full p-1'>
                         <LuClock4 size={60} className='bg-[#2563EB] text-white p-2 rounded-full' />
                     </div>
@@ -36,7 +36,7 @@ const WhyChooseUs = () => {
                 </div>
 
 
-                <div className='flex flex-col bg-gray-700 shadow rounded-xl hover:scale-105 p-6'>
+                <div className='flex flex-col bg-gray-700 hover:bg-gray-600  shadow rounded-xl hover:scale-105 p-6'>
                     <div className='rounded-full p-1'>
                         <IoShieldHalfOutline size={60} className='bg-[#2563EB] text-white p-2 rounded-full' />
                     </div>
@@ -50,7 +50,7 @@ const WhyChooseUs = () => {
 
 
             <div className='w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 mt-10 gap-8'>
-                <div className='flex flex-col bg-gray-700 shadow rounded-xl hover:scale-105 p-6'>
+                <div className='flex flex-col hover:bg-gray-600  bg-gray-700 shadow rounded-xl hover:scale-105 p-6'>
                     <h2 className='mt-4 text-xl text-white font-bold'>Quality Assurance</h2>
                     <p className='flex items-center gap-1 text-lg mt-5 text-white'> <FaStar className='text-yellow-600  text-xl font-bold' /> 
                     Regular Performance Monitoring</p>
@@ -59,7 +59,7 @@ const WhyChooseUs = () => {
                     Continuous Improvement Program</p>
                 </div>
 
-                <div className='flex flex-col bg-gray-700 shadow rounded-xl hover:scale-105 p-6'>
+                <div className='flex flex-col bg-gray-700 hover:bg-gray-600  shadow rounded-xl hover:scale-105 p-6'>
                     <h2 className='mt-4 text-xl text-white font-bold'>Customer Support</h2>
                     <p className='flex items-center gap-1 text-lg mt-5 text-white'> <FaHeadphonesAlt className='text-[#2563EB] text-xl font-bold' />Dedicated Account Manager</p>
                     <p className='flex items-center gap-1 text-lg text-white'> <FaHeadphonesAlt className='text-[#2563EB] text-xl font-bold' />

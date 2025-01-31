@@ -22,13 +22,13 @@ const Features = () => {
             </div>
             <div className='w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5'>
                 {features.map(feature => (
-                    <div key={feature.id} className='flex flex-col items-center bg-white shadow rounded-2xl hover:scale-105 p-6'>
+                    <div key={feature.id} className='flex flex-col items-center hover:border-1 hover:border-[#2563EB] bg-white shadow rounded-2xl hover:scale-105 p-6'>
                         <div className='bg-white rounded-full p-1'>
                             <div className='bg-white rounded-full'>
                                 <img src={feature.img} alt={feature.title} className='w-[100px] h-[100px] rounded-full p-1' />
                             </div>
                         </div>
-                        <h2 className='mt-4 text-lg font-semibold'>{feature.title}</h2>
+                        <h2 className='mt-4 text-xl font-semibold'>{feature.title}</h2>
                         <p className='text-center text-gray-600 mt-2'>{feature.description}</p>
                         <button className='mt-4 px-4 py-2 text-[#2563EB] font-bold cursor-pointer'>Learn More</button>
                     </div>

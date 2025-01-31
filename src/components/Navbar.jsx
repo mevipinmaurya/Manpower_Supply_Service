@@ -11,17 +11,20 @@ const Navbar = () => {
       <div className='flex justify-between items-center max-w-6xl mx-auto'>
         {/* Logo */}
         <div className='text-xl font-bold'>
-          <Link><img src={logo} alt="" /></Link>
+          <Link to={"/"}><img src={logo} alt="" /></Link>
         </div>
 
         {/* Desktop Menu (Hidden on Small Screens) */}
         <ul className='hidden md:flex text-md md:text-lg gap-6 items-center'>
-          <li className='cursor-pointer text-white'>About Us</li>
+          <Link to={"/about"} className='cursor-pointer text-white'>About Us</Link>
           <li className='cursor-pointer text-white'>Services</li>
           <li className='cursor-pointer text-white'>Pricing</li>
           <li className='cursor-pointer text-white'>FAQs</li>
           <li className='cursor-pointer text-white'>Contact Us</li>
-          <button className='rounded-4xl w-[80px] p-2 font-semibold bg-white cursor-pointer text-[#2563EB]'>Login</button>
+          <li className='cursor-pointer text-white'>Blog</li>
+          <Link to={"/login"}>
+            <button className='rounded-4xl w-[80px] p-2 font-semibold bg-white cursor-pointer text-[#2563EB]'>Login</button>
+          </Link>
         </ul>
 
         {/* Mobile Menu Toggle (Visible on Small Screens) */}
@@ -40,7 +43,10 @@ const Navbar = () => {
           <li className='cursor-pointer text-white'>Pricing</li>
           <li className='cursor-pointer text-white'>FAQs</li>
           <li className='cursor-pointer text-white'>Contact Us</li>
-          <li className='cursor-pointer text-white'>Login</li>
+          <li className='cursor-pointer text-white'>Blog</li>
+          <Link to={"/login"}>
+            <button className='rounded-4xl w-[80px] p-2 font-semibold bg-white cursor-pointer text-[#2563EB]'>Login</button>
+          </Link>
         </ul>
       )}
     </nav>

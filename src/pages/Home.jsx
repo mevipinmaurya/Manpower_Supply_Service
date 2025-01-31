@@ -4,6 +4,8 @@ import ServicesHome from '../components/ServicesHome'
 import Features from '../components/Features'
 import HomeBanner from '../components/HomeBanner'
 import WhyChooseUs from '../components/WhyChooseUs'
+import FAQ from '../components/FAQ'
+import Carousel from '../components/Carousel'
 const Home = () => {
   return (
     <div>
@@ -12,6 +14,8 @@ const Home = () => {
       <HomeBanner />
       <Features />
       <WhyChooseUs />
+      <Carousel />
+      <FAQ />
     </div>
   )
 }
