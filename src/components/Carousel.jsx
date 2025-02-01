@@ -51,8 +51,8 @@ const Carousel = () => {
     };
 
     return (
-        <div className='flex w-full flex-col mt-20 gap-4 justify-center items-center p-16'>
-            <h1 className='text-4xl font-bold text-[#2563EB]'>What our clients say</h1>
+        <div className='flex w-full flex-col mt-14 gap-4 justify-center items-center p-16'>
+            <h1 className='text-4xl font-bold text-[#973C00]'>What our clients say</h1>
             <p className='text-lg mb-10 text-gray-700 text-center w-[60%]'>Discover why businesses and homeowners trust our manpower services.</p>
 
             <div className="relative w-full max-w-6xl mx-auto mt-10 px-4">
@@ -82,13 +82,13 @@ const Carousel = () => {
 
                 {/* Navigation Buttons */}
                 <button
-                    className="absolute left-0 top-1/2 -translate-y-1/2 bg-[#2563EB] text-white p-2 rounded-full cursor-pointer shadow-md hover:bg-[#2563EB]"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 bg-[#176ABC] text-white p-2 rounded-full cursor-pointer shadow-md hover:bg-[#176ABC]"
                     onClick={prevSlide}
                 >
                     <ChevronLeft />
                 </button>
                 <button
-                    className="absolute right-0 top-1/2 -translate-y-1/2 bg-[#2563EB] cursor-pointer text-white p-2 rounded-full shadow-md hover:bg-[#2563EB]"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 bg-[#176ABC] cursor-pointer text-white p-2 rounded-full shadow-md hover:bg-[#176ABC]"
                     onClick={nextSlide}
                 >
                     <ChevronRight />

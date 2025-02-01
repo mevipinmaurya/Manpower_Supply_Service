@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import electrician from "../assets/electrician.jpg";
 import cleaner from "../assets/cleaner.jpg";
 import mechanic from "../assets/mechanic.png";
@@ -15,22 +15,40 @@ const features = [
 
 const Features = () => {
     return (
-        <div className='flex w-full justify-center items-center flex-col mt-20 px-4'>
-            <div className='w-full max-w-2xl mb-10 text-center'>
-                <h1 className='text-4xl font-bold text-[#2563EB]'>Features & Benefits</h1>
-                <p className='text-lg text-gray-600 mt-4'>Empowering businesses with skilled, reliable, and flexible manpower solutions to drive efficiency, productivity, and success!</p>
+        <div className="w-full flex flex-col items-center justify-center mt-24 px-6">
+            {/* Section Header */}
+            <div className="w-full max-w-3xl text-center mb-12">
+                <h1 className="text-4xl font-bold text-[#973C00]">Features & Benefits</h1>
+                <p className="text-lg text-gray-700 mt-4">
+                    Our expertise in manpower solutions ensures efficiency, reliability, and industry-specific excellence.
+                </p>
             </div>
-            <div className='w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5'>
-                {features.map(feature => (
-                    <div key={feature.id} className='flex flex-col items-center hover:border-1 hover:border-[#2563EB] bg-white shadow rounded-2xl hover:scale-105 p-6'>
-                        <div className='bg-white rounded-full p-1'>
-                            <div className='bg-white rounded-full'>
-                                <img src={feature.img} alt={feature.title} className='w-[100px] h-[100px] rounded-full p-1' />
-                            </div>
+
+            {/* Feature List with Two-Column Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full">
+                {features.map((feature, index) => (
+                    <div
+                        key={feature.id}
+                        className="relative flex flex-col p-6 bg-white shadow-md rounded-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl border border-gray-200"
+                    >
+                        {/* Background Shape Effect */}
+                        <div className="absolute top-0 left-0 w-full h-1 bg-[#FF6900] rounded-t-xl"></div>
+
+                        {/* Image Wrapper */}
+                        <div className="flex items-center justify-center w-14 h-14 bg-[#176ABC] rounded-full shadow-lg mx-auto">
+                            <img src={feature.img} alt={feature.title} className="w-12 h-12 rounded-full object-cover" />
                         </div>
-                        <h2 className='mt-4 text-xl font-semibold'>{feature.title}</h2>
-                        <p className='text-center text-gray-600 mt-2'>{feature.description}</p>
-                        <button className='mt-4 px-4 py-2 text-[#2563EB] font-bold cursor-pointer'>Learn More</button>
+
+                        {/* Feature Title */}
+                        <h2 className="mt-6 text-xl font-semibold text-[#176ABC] text-center">{feature.title}</h2>
+
+                        {/* Feature Description */}
+                        <p className="text-center text-gray-600 mt-2 text-sm leading-relaxed">{feature.description}</p>
+
+                        {/* CTA Button */}
+                        <button className="mt-5 px-5 py-2 bg-[#FF6900] text-white text-sm font-semibold rounded-full shadow-md transition-all duration-300 ease-in-out hover:bg-[#ff5e00] cursor-pointer mx-auto">
+                            Learn More
+                        </button>
                     </div>
                 ))}
             </div>

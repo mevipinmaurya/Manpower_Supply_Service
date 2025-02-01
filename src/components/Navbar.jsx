@@ -7,7 +7,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className='w-full p-3 bg-[#2563EB] fixed top-0 left-0 z-20'>
+    <nav className='w-full p-3 bg-[#176ABC] fixed top-0 left-0 z-20'>
       <div className='flex justify-between items-center max-w-6xl mx-auto'>
         {/* Logo */}
         <div className='text-xl font-bold'>
@@ -23,7 +23,7 @@ const Navbar = () => {
           <li className='cursor-pointer text-white'>Contact Us</li>
           <li className='cursor-pointer text-white'>Blog</li>
           <Link to={"/login"}>
-            <button className='rounded-4xl w-[80px] p-2 font-semibold bg-white cursor-pointer text-[#2563EB]'>Login</button>
+            <button className='rounded-4xl w-[80px] p-2 font-semibold bg-white cursor-pointer text-[#176ABC]'>Login</button>
           </Link>
         </ul>
 
@@ -38,14 +38,14 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <ul className='md:hidden flex flex-col items-center gap-4 mt-4 p-4 rounded-lg shadow-lg'>
-          <li className='cursor-pointer text-white'>About Us</li>
+          <Link to={"/about"} className='cursor-pointer text-white'>About Us</Link>
           <li className='cursor-pointer text-white'>Services</li>
           <li className='cursor-pointer text-white'>Pricing</li>
           <li className='cursor-pointer text-white'>FAQs</li>
           <li className='cursor-pointer text-white'>Contact Us</li>
           <li className='cursor-pointer text-white'>Blog</li>
           <Link to={"/login"}>
-            <button className='rounded-4xl w-[80px] p-2 font-semibold bg-white cursor-pointer text-[#2563EB]'>Login</button>
+            <button className='rounded-4xl w-[80px] p-2 font-semibold bg-white cursor-pointer text-[#176ABC]'>Login</button>
           </Link>
         </ul>
       )}

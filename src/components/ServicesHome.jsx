@@ -5,26 +5,43 @@ import mechanic from "../assets/mechanic.png";
 import plumber from "../assets/plumber.jpg";
 
 const services = [
-    { id: 1, img: electrician, title: "Electrician", description: "Professional electrical services for your home and business." },
-    { id: 2, img: cleaner, title: "Cleaner", description: "Top-notch cleaning services for a sparkling clean home." },
-    { id: 3, img: mechanic, title: "Mechanic", description: "Expert car repair and maintenance services." },
-    { id: 4, img: plumber, title: "Plumber", description: "Expert Plumber repair and tap services." },
+    { id: 1, img: electrician, title: "Electrician", description: "Expert electrical services for safe and efficient systems." },
+    { id: 2, img: cleaner, title: "Cleaner", description: "High-quality cleaning solutions for a spotless environment." },
+    { id: 3, img: mechanic, title: "Mechanic", description: "Professional auto repair and maintenance services." },
+    { id: 4, img: plumber, title: "Plumber", description: "Reliable plumbing services for homes and businesses." },
 ];
 
 const ServicesHome = () => {
     return (
-        <div className='flex w-full justify-center items-center flex-col mt-16 px-4'>
-            <div className='w-full max-w-2xl mb-10 text-center'>
-                <h1 className='text-4xl font-bold text-[#2563EB]'>Our <span className='text-[#2563EB]'>Services</span></h1>
-                <p className='text-lg text-gray-600 mt-4'>Empowering Your Workforce, Elevating Your Business</p>
+        <div className="w-full flex flex-col items-center justify-center mt-16 px-6">
+            {/* Section Title */}
+            <div className="text-center max-w-3xl mb-10">
+                <h1 className="text-4xl font-bold text-[#973C00]">Our Services</h1>
+                <p className="text-lg text-gray-700 mt-4">Expert manpower services tailored to your needs.</p>
             </div>
-            <div className='w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5'>
-                {services.map(service => (
-                    <div key={service.id} className='flex flex-col items-center bg-gray-50 shadow rounded-lg p-6'>
-                        <img src={service.img} alt={service.title} className='w-[100px] h-[100px] rounded-full' />
-                        <h2 className='mt-4 text-xl font-semibold'>{service.title}</h2>
-                        <p className='text-center text-gray-600 mt-2'>{service.description}</p>
-                        <button className='mt-4 px-4 py-2 bg-[#2563EB] text-white rounded-lg hover:bg-[#2563EB] cursor-pointer'>Learn More</button>
+
+            {/* Services Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-6xl">
+                {services.map((service) => (
+                    <div
+                        key={service.id}
+                        className="relative flex flex-col items-center bg-white shadow-md rounded-xl p-5 border border-gray-200 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                    >
+                        {/* Image */}
+                        <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-[#176ABC]">
+                            <img src={service.img} alt={service.title} className="w-full h-full object-cover" />
+                        </div>
+
+                        {/* Title */}
+                        <h2 className="mt-3 text-lg font-semibold text-[#176ABC]">{service.title}</h2>
+
+                        {/* Description */}
+                        <p className="text-center text-gray-600 mt-2 text-sm leading-tight">{service.description}</p>
+
+                        {/* Learn More Button */}
+                        <button className="mt-4 px-4 py-2 text-sm bg-[#FF6900] text-white rounded-full transition-all duration-300 hover:bg-[#ff5e00] cursor-pointer">
+                            Learn More
+                        </button>
                     </div>
                 ))}
             </div>

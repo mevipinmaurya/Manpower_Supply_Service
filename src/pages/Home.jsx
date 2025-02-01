@@ -6,16 +6,19 @@ import HomeBanner from '../components/HomeBanner'
 import WhyChooseUs from '../components/WhyChooseUs'
 import FAQ from '../components/FAQ'
 import Carousel from '../components/Carousel'
+import ClientsPartners from '../components/ClientsPartners'
+import HomeAbout from '../components/HomeAbout'
 const Home = () => {
   return (
     <div>
       <HeroSection />
       <ServicesHome />
-      <HomeBanner />
+      <HomeAbout />
       <Features />
       <WhyChooseUs />
       <Carousel />
       <FAQ />
+      <HomeBanner />
     </div>
   )
 }

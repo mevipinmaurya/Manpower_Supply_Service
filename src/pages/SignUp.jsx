@@ -63,7 +63,7 @@ export default function Signup() {
             />
             <button
               type="submit"
-              className="w-full cursor-pointer bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
+              className="w-full cursor-pointer bg-[#176ABC] text-white py-2 rounded hover:bg-[#1761bc] transition"
             >
               Create Account
             </button>
