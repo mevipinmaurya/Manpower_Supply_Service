@@ -1,8 +1,8 @@
 import React from 'react';
 import electrician from "../assets/electrician.jpg";
 import cleaner from "../assets/cleaner.jpg";
-import mechanic from "../assets/mechanic.png";
 import plumber from "../assets/plumber.jpg";
+import mechanic from "../assets/mechanic.png";
 
 const services = [
     { id: 1, img: electrician, title: "Electrician", description: "Expert electrical services for safe and efficient systems." },
@@ -13,10 +13,10 @@ const services = [
 
 const ServicesHome = () => {
     return (
-        <div className="w-full flex flex-col items-center justify-center mt-16 px-6">
+        <div className="w-full flex flex-col items-center justify-center mt-10 px-6">
             {/* Section Title */}
             <div className="text-center max-w-3xl mb-10">
-                <h1 className="text-4xl font-bold text-[#973C00]">Our Services</h1>
+                <h1 className="text-4xl font-bold text-[#2161F5]">Our Services</h1>
                 <p className="text-lg text-gray-700 mt-4">Expert manpower services tailored to your needs.</p>
             </div>
 
@@ -28,18 +28,18 @@ const ServicesHome = () => {
                         className="relative flex flex-col items-center bg-white shadow-md rounded-xl p-5 border border-gray-200 transition-all duration-300 hover:scale-105 hover:shadow-xl"
                     >
                         {/* Image */}
-                        <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-[#176ABC]">
+                        <div className="w-16 h-16 rounded-full overflow-hidden">
                             <img src={service.img} alt={service.title} className="w-full h-full object-cover" />
                         </div>
 
                         {/* Title */}
-                        <h2 className="mt-3 text-lg font-semibold text-[#176ABC]">{service.title}</h2>
+                        <h2 className="mt-3 text-lg font-semibold text-[#2161F5]">{service.title}</h2>
 
                         {/* Description */}
                         <p className="text-center text-gray-600 mt-2 text-sm leading-tight">{service.description}</p>
 
                         {/* Learn More Button */}
-                        <button className="mt-4 px-4 py-2 text-sm bg-[#FF6900] text-white rounded-full transition-all duration-300 hover:bg-[#ff5e00] cursor-pointer">
+                        <button className="mt-4 px-4 py-2 text-sm bg-[#2161F5] text-white rounded-full transition-all duration-300 hover:bg-[#2161F5] cursor-pointer">
                             Learn More
                         </button>
                     </div>

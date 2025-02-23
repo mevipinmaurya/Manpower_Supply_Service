@@ -18,7 +18,7 @@ export default function Signup() {
   }
 
   return (
-    <div className="flex items-center justify-center h-screen bg-[#CAECFF]">
+    <div className="flex items-center justify-center h-screen bg-[#8EC5FF]">
       <div className={`mx - auto w-full max-w-lg bg-white rounded-2xl p-10 shadow-4xl`}>
         <h2 className="text-center text-2xl font-bold leading-tight">Sign up to create account</h2>
         <p className="mt-2 text-center text-base text-black/60">
@@ -63,7 +63,7 @@ export default function Signup() {
             />
             <button
               type="submit"
-              className="w-full cursor-pointer bg-[#176ABC] text-white py-2 rounded hover:bg-[#1761bc] transition"
+              className="w-full cursor-pointer bg-orange-500 text-white py-2 rounded hover:bg-orange-500 transition"
             >
               Create Account
             </button>

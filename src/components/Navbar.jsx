@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import logo from "../assets/logo1.svg";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { Link as ScrollLink } from "react-scroll";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   return (
-    <nav className='w-full p-3 bg-[#176ABC] fixed top-0 left-0 z-20'>
+    <nav className='w-full p-2 bg-white text-black'>
       <div className='flex justify-between items-center max-w-6xl mx-auto'>
         {/* Logo */}
         <div className='text-xl font-bold'>
-          <Link to={"/"}><img src={logo} alt="" /></Link>
+          <Link to={'/'} className='font-bold text-3xl text-[#2161F5] font-sans'>ManPower</Link>
         </div>
 
         {/* Desktop Menu (Hidden on Small Screens) */}
         <ul className='hidden md:flex text-md md:text-lg gap-6 items-center'>
-          <Link to={"/about"} className='cursor-pointer text-white'>About Us</Link>
-          <li className='cursor-pointer text-white'>Services</li>
-          <li className='cursor-pointer text-white'>Pricing</li>
-          <li className='cursor-pointer text-white'>FAQs</li>
-          <li className='cursor-pointer text-white'>Contact Us</li>
-          <li className='cursor-pointer text-white'>Blog</li>
-          <Link to={"/login"}>
-            <button className='rounded-4xl w-[80px] p-2 font-semibold bg-white cursor-pointer text-[#176ABC]'>Login</button>
+          <Link to={'/about'} className={`cursor-pointer ${location.pathname === '/about' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>About Us</Link>
+          <li className='cursor-pointer text-black'>Services</li>
+          <li className='cursor-pointer text-black'>Pricing</li>
+          <li className='cursor-pointer text-black'> <ScrollLink to="faq" smooth={true} duration={500}>FAQs</ScrollLink></li>
+          <li className='cursor-pointer text-black'>Contact Us</li>
+          <li className='cursor-pointer text-black'>Blog</li>
+          <Link to={'/login'}>
+            <button className={`rounded-4xl w-[100px] p-2 cursor-pointer font-bold ${location.pathname === '/login' ? 'bg-[#2161F5] text-white' : 'bg-gray-300 text-black'}`}>Login</button>
           </Link>
         </ul>
 
@@ -38,14 +40,14 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <ul className='md:hidden flex flex-col items-center gap-4 mt-4 p-4 rounded-lg shadow-lg'>
-          <Link to={"/about"} className='cursor-pointer text-white'>About Us</Link>
-          <li className='cursor-pointer text-white'>Services</li>
-          <li className='cursor-pointer text-white'>Pricing</li>
-          <li className='cursor-pointer text-white'>FAQs</li>
-          <li className='cursor-pointer text-white'>Contact Us</li>
-          <li className='cursor-pointer text-white'>Blog</li>
-          <Link to={"/login"}>
-            <button className='rounded-4xl w-[80px] p-2 font-semibold bg-white cursor-pointer text-[#176ABC]'>Login</button>
+          <Link to={'/about'} className={`cursor-pointer ${location.pathname === '/about' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>About Us</Link>
+          <li className='cursor-pointer text-black'>Services</li>
+          <li className='cursor-pointer text-black'>Pricing</li>
+          <li className='cursor-pointer text-black'> <ScrollLink to="faq" smooth={true} duration={500}>FAQs</ScrollLink></li>
+          <li className='cursor-pointer text-black'>Contact Us</li>
+          <li className='cursor-pointer text-black'>Blog</li>
+          <Link to={'/login'}>
+            <button className={`rounded-4xl w-[100px] p-2 cursor-pointer font-bold ${location.pathname === '/login' ? 'bg-[#2161F5] text-white' : 'bg-gray-300 text-black'}`}>Login</button>
           </Link>
         </ul>
       )}
