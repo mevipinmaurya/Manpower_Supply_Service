@@ -10,10 +10,12 @@ import SignUp from './pages/SignUp'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop.jsx'
+import { Toaster } from "react-hot-toast"
 
 const App = () => {
   return (
     <BrowserRouter>
+      <Toaster />
       <ScrollToTop />
       <Navbar />
       <Routes>

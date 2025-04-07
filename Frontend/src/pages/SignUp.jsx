@@ -1,19 +1,39 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
+import { Link, useNavigate } from 'react-router-dom'
 import Input from "../components/Input"
+import axios from 'axios';
+import { USER_API_ENDPOINT } from '../utils/Constants';
+import toast from 'react-hot-toast';
 
 export default function Signup() {
-  // const navigate = useNavigate()
-  const [error, setError] = useState("")
-  const { register, handleSubmit } = useForm()
+  const navigate = useNavigate()
 
-  const create = async (data) => { // input data available here in "data"
-    setError("")
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // console.log(name);
+    // console.log(email);
+    // console.log(password);
+
     try {
-      console.log(data)
+      const res = await axios.post(`${USER_API_ENDPOINT}/register`, {
+        name, email, password
+      }, {
+        headers: {
+          'Content-Type': "application/json"
+        },
+        withCredentials: true
+      })
+      if (res.data.success) {
+        navigate('/login')
+        toast.success(res.data.message)
+      }
     } catch (error) {
-      setError(error.message)
+      toast.error(error.response.data.message)
     }
   }
 
@@ -30,36 +50,29 @@ export default function Signup() {
             Sign In
           </Link>
         </p>
-        {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+        {/* {error && <p className="text-red-600 mt-8 text-center">{error}</p>} */}
 
-        <form onSubmit={handleSubmit(create)}>
+        <form onSubmit={handleSubmit}>
           <div className='space-y-5'>
             <Input
               label="Full Name: "
               placeholder="Enter your full name"
-              {...register("name", {
-                required: true,
-              })}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
             <Input
               label="Email: "
               placeholder="Enter your email"
               type="email"
-              {...register("email", {
-                required: true,
-                validate: {
-                  matchPatern: (value) => /^\w+([.-]?\w+)@\w+([.-]?\w+)(\.\w{2,3})+$/.test(value) ||
-                    "Email address must be a valid address",
-                }
-              })}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <Input
               label="Password: "
               type="password"
               placeholder="Enter your password"
-              {...register("password", {
-                required: true,
-              })}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <button
               type="submit"

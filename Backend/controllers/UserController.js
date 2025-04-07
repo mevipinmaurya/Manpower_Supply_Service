@@ -5,9 +5,9 @@ import jwt from "jsonwebtoken"
 // User signup functionality
 const register = async (req, res) => {
     try {
-        const { name, username, email, password } = req.body;
+        const { name, email, password } = req.body;
         // Basic  validation
-        if (!name || !username || !email || !password) {
+        if (!name || !email || !password) {
             return res.status(401).json({
                 success: false,
                 message: "All fields are required"
@@ -25,7 +25,6 @@ const register = async (req, res) => {
         const hashPass = await bcryptjs.hash(password, 10);
         const user = new User({
             name: name,
-            username: username,
             email: email,
             password: hashPass
         })
