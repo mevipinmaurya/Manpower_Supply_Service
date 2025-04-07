@@ -19,11 +19,15 @@ const Navbar = () => {
         {/* Desktop Menu (Hidden on Small Screens) */}
         <ul className='hidden md:flex text-md md:text-lg gap-6 items-center'>
           <Link to={'/about'} className={`cursor-pointer ${location.pathname === '/about' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>About Us</Link>
-          <li className='cursor-pointer text-black'>Services</li>
-          <li className='cursor-pointer text-black'>Pricing</li>
-          <li className='cursor-pointer text-black'> <ScrollLink to="faq" smooth={true} duration={500}>FAQs</ScrollLink></li>
-          <li className='cursor-pointer text-black'>Contact Us</li>
-          <li className='cursor-pointer text-black'>Blog</li>
+          <Link to={'/services'} className={`cursor-pointer ${location.pathname === '/services' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Services</Link>
+          <Link to={'/pricing'} className={`cursor-pointer ${location.pathname === '/pricing' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Pricing</Link>
+          {
+            location.pathname === '/' ?
+              <Link to={'/about'} className={`cursor-pointer ${location.pathname === '/about' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}> <ScrollLink to="faq" smooth={true} duration={500}>FAQs</ScrollLink></Link>
+              : <></>
+          }
+          <Link to={'/contact'} className={`cursor-pointer ${location.pathname === '/contact' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Contact Us</Link>
+          <Link to={'/blog'} className={`cursor-pointer ${location.pathname === '/blog' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Blog</Link>
           <Link to={'/login'}>
             <button className={`rounded-4xl w-[100px] p-2 cursor-pointer font-bold ${location.pathname === '/login' ? 'bg-[#2161F5] text-white' : 'bg-gray-300 text-black'}`}>Login</button>
           </Link>
@@ -41,11 +45,15 @@ const Navbar = () => {
       {isOpen && (
         <ul className='md:hidden flex flex-col items-center gap-4 mt-4 p-4 rounded-lg shadow-lg'>
           <Link to={'/about'} className={`cursor-pointer ${location.pathname === '/about' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>About Us</Link>
-          <li className='cursor-pointer text-black'>Services</li>
-          <li className='cursor-pointer text-black'>Pricing</li>
-          <li className='cursor-pointer text-black'> <ScrollLink to="faq" smooth={true} duration={500}>FAQs</ScrollLink></li>
-          <li className='cursor-pointer text-black'>Contact Us</li>
-          <li className='cursor-pointer text-black'>Blog</li>
+          <Link to={'/services'} className={`cursor-pointer ${location.pathname === '/services' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Services</Link>
+          <Link to={'/pricing'} className={`cursor-pointer ${location.pathname === '/pricing' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Pricing</Link>
+          {
+            location.pathname === '/'?
+            <Link to={'/about'} className={`cursor-pointer ${location.pathname === '/about' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}> <ScrollLink to="faq" smooth={true} duration={500}>FAQs</ScrollLink></Link>
+            :<></>
+          }
+          <Link to={'/contact'} className={`cursor-pointer ${location.pathname === '/contact' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Contact Us</Link>
+          <Link to={'/blog'} className={`cursor-pointer ${location.pathname === '/blog' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Blog</Link>
           <Link to={'/login'}>
             <button className={`rounded-4xl w-[100px] p-2 cursor-pointer font-bold ${location.pathname === '/login' ? 'bg-[#2161F5] text-white' : 'bg-gray-300 text-black'}`}>Login</button>
           </Link>
