@@ -27,7 +27,7 @@ const Navbar = () => {
               : <></>
           }
           <Link to={'/contact'} className={`cursor-pointer ${location.pathname === '/contact' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Contact Us</Link>
-          <Link to={'/blog'} className={`cursor-pointer ${location.pathname === '/blog' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Blog</Link>
+          <Link to={'/blog'} className={`cursor-pointer ${location.pathname === '/blog' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Blogs</Link>
           <Link to={'/login'}>
             <button className={`rounded-4xl w-[100px] p-2 cursor-pointer font-bold ${location.pathname === '/login' ? 'bg-[#2161F5] text-white' : 'bg-gray-300 text-black'}`}>Login</button>
           </Link>
@@ -53,7 +53,7 @@ const Navbar = () => {
             :<></>
           }
           <Link to={'/contact'} className={`cursor-pointer ${location.pathname === '/contact' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Contact Us</Link>
-          <Link to={'/blog'} className={`cursor-pointer ${location.pathname === '/blog' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Blog</Link>
+          <Link to={'/blog'} className={`cursor-pointer ${location.pathname === '/blog' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Blogs</Link>
           <Link to={'/login'}>
             <button className={`rounded-4xl w-[100px] p-2 cursor-pointer font-bold ${location.pathname === '/login' ? 'bg-[#2161F5] text-white' : 'bg-gray-300 text-black'}`}>Login</button>
           </Link>

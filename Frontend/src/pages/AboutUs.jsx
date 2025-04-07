@@ -77,7 +77,7 @@ const AboutUs = () => {
           <div className='md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left'>
             <h2 className='font-bold text-3xl sm:text-4xl md:text-5xl text-amber-800'>About Us</h2>
             <p className='mt-5 text-lg'>We provide skilled, semi-skilled, and general workforce solutions tailored to your industry needs. From temporary staffing to permanent placements, our reliable manpower ensures smooth operations and business growth. Whether you need temporary, contract-based, or permanent staffing, we provide tailored manpower solutions to ensure efficiency and success.</p>
-            <button className='bg-[#2161F5] mt-6 w-[200px] p-3 rounded-xl text-white font-bold'>Read More</button>
+            {/* <button className='bg-[#2161F5] mt-6 w-[200px] p-3 rounded-xl text-white font-bold'>Read More</button> */}
           </div>
           <div className='md:w-1/2 flex justify-center '>
             <img src={aboutMid} alt='About Us' className='p-10 w-full max-w-sm mt-4 rounded md:max-w-full h-auto' />
@@ -96,7 +96,7 @@ const AboutUs = () => {
               We Provide Professional <br /> Home Services.
             </h2>
             <p className='mt-5 text-lg'>We specialize in providing skilled, semi-skilled, and general workforce across various industries. Our expert manpower solutions ensure efficiency, productivity, and seamless operations for your business. Whether you need temporary, contract-based, or permanent staffing, we are here to support your workforce needs.</p>
-            <button className='bg-[#2161F5] mt-6 w-[200px] p-3 rounded-xl text-white font-bold'>Read More</button>
+            {/* <button className='bg-[#2161F5] mt-6 w-[200px] p-3 rounded-xl text-white font-bold'>Read More</button> */}
           </div>
         </div>
 

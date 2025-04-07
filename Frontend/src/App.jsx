@@ -12,6 +12,7 @@ import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop.jsx'
 import { Toaster } from "react-hot-toast"
 import Blog from './pages/Blog.jsx'
+import BlogPreview from './components/BlogPreview.jsx'
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path='/pricing' element={<Pricing />} />
         <Route path='/contact' element={<ContactUs />} />
         <Route path='/blog' element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogPreview />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
       </Routes>
