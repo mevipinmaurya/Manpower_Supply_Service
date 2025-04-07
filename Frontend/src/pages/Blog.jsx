@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BlogPosts } from '../components/BlogPosts';
+import { BlogPosts } from '../utils/BlogPosts';
 import { Link } from 'react-router-dom';
 
 const Blog = () => {
@@ -41,7 +41,7 @@ const Blog = () => {
 
                     {/* Blog List */}
                     <div className='w-full md:w-[75%] order-2 md:order-1'>
-                        <h2 className='font-semibold text-gray-950 text-3xl md:text-4xl mb-3'>
+                        <h2 className='font-semibold text-gray-950 text-xl md:text-2xl mb-3'>
                             {selectedTag === 'All' ? 'Checkout Our Latest Blogs' : `Category: ${selectedTag}`}
                         </h2>
 

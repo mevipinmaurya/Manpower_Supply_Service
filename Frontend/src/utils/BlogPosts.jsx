@@ -15,7 +15,6 @@ import b3 from "../assets/blogImages/b3.jpg"
 import b4 from "../assets/blogImages/b4.jpg"
 import b5 from "../assets/blogImages/b5.jpg"
 import b6 from "../assets/blogImages/b6.jpg"
-import { FaRegMoneyBill1 } from "react-icons/fa6"
 
 export const BlogPosts = [{
     id: 1,
