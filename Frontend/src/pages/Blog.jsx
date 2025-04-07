@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { BlogPosts } from '../components/BlogPosts';
-import BlogPreview from '../components/BlogPreview';
 import { Link } from 'react-router-dom';
 
 const Blog = () => {
     const [selectedTag, setSelectedTag] = useState('All');
-    const [previewPost, setPreviewPost] = useState(null); // State for preview
 
     const categories = ['All', 'Happy Homes', 'Interior', 'Wellness', 'Beauty'];
 
@@ -32,7 +30,6 @@ const Blog = () => {
                                             }`}
                                         onClick={() => {
                                             setSelectedTag(category);
-                                            setPreviewPost(null); // Clear preview on category change
                                         }}
                                     >
                                         {category}
