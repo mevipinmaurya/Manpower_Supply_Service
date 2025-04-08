@@ -183,7 +183,7 @@ const Services = () => {
                       <p className='mt-2'><span className='text-yellow-700'>Price</span> : ₹ {items.price}</p>
                       <p className='mt-2 text-sm'>{items.detail}</p>
 
-                      {/* <button className='text-left bg-[#2161F5] p-2 mt-3 cursor-pointer rounded-md text-white w-fit'>Book Service</button> */}
+                      {/* <button className='text-left bg-[#000000] p-2 mt-3 cursor-pointer rounded-md text-white w-fit'>Book Service</button> */}
                       {
                         added.includes(items.id) ? (
                           <p
@@ -209,7 +209,7 @@ const Services = () => {
           )}
 
           {/* Right Column - Categories */}
-          <div className='border border-gray-400 rounded-md w-full lg:w-[30%] order-3'>
+          <div className='border border-gray-300 rounded-md w-full lg:w-[30%] order-3'>
 
             <div className='w-full flex px-4 justify-between items-center'>
               <h1 className='font-semibold text-lg p-3'>Cart Items</h1>

@@ -8,12 +8,12 @@ const HeroSection = () => {
             {/* Left Section - Text Content */}
             <div className='md:w-[60%] w-full flex order-2 md:order-1 flex-col justify-center text-left p-4 md:p-8'>
                 <h2 className='text-3xl sm:text-4xl md:text-6xl font-bold text-gray-800'>
-                    Reliable, Professional <span className='text-[#2161F5]'>Manpower</span> Services
+                    Reliable, Professional <span className='text-[#6E42E5]'>Manpower</span> Services
                 </h2>
                 <p className='text-gray-600 mt-4 text-base sm:text-lg'>
                     We provide top-notch manpower solutions tailored to your business needs. Our experienced team ensures efficiency and reliability at every step, delivering exceptional results you can trust.
                 </p>
-                <button className='bg-[#2161F5] cursor-pointer hover:bg-[#2161F5] text-white font-semibold py-3 px-4 sm:py-4 sm:px-6 rounded-full w-[180px] sm:w-[200px] mt-6 text-xs sm:text-sm'>
+                <button className='bg-[#6E42E5] cursor-pointer hover:bg-[#6E42E5] text-white font-semibold py-3 px-4 sm:py-4 sm:px-6 rounded-full w-[180px] sm:w-[200px] mt-6 text-xs sm:text-sm'>
                     Get Started
                 </button>
             </div>

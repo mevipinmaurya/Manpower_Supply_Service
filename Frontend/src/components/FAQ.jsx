@@ -48,7 +48,7 @@ const FAQ = () => {
             <div className="flex justify-center max-w-[80%]">
                 <div className="space-y-4">
                     {faqs.map((faq, index) => (
-                        <div key={index} className="border-b border-[#2161F5]  pb-3">
+                        <div key={index} className="border-b border-[#6E42E5]  pb-3">
                             <button
                                 className="cursor-pointer w-full flex justify-between items-center text-left text-lg font-medium text-white "
                                 onClick={() => toggleFAQ(index)}
@@ -57,7 +57,7 @@ const FAQ = () => {
                                 <span className="text-xl">{openIndex === index ?
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        stroke="#2161F5"
+                                        stroke="#6E42E5"
                                         stroke-width="2"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
@@ -67,7 +67,7 @@ const FAQ = () => {
                                         <path d="M8 12h8"></path>
                                     </svg>
                                     :
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2161F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6E42E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <circle cx="12" cy="12" r="10"></circle>
                                         <path d="M8 12h8"></path>
                                         <path d="M12 8v8"></path>

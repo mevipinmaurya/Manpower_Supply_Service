@@ -17,10 +17,10 @@ const Footer = () => {
               Professional security and housekeeping services for businesses and homes. Available 24/7 with trained and certified staff.
             </p>
             <div className="flex gap-3">
-              <FaFacebook className="text-[#2161F5] text-2xl cursor-pointer hover:scale-110 transition" />
-              <FaLinkedin className="text-[#2161F5] text-2xl cursor-pointer hover:scale-110 transition" />
-              <FaSquareTwitter className="text-[#2161F5] text-2xl cursor-pointer hover:scale-110 transition" />
-              <FaInstagramSquare className="text-[#2161F5] text-2xl cursor-pointer hover:scale-110 transition" />
+              <FaFacebook className="text-[#6E42E5] text-2xl cursor-pointer hover:scale-110 transition" />
+              <FaLinkedin className="text-[#6E42E5] text-2xl cursor-pointer hover:scale-110 transition" />
+              <FaSquareTwitter className="text-[#6E42E5] text-2xl cursor-pointer hover:scale-110 transition" />
+              <FaInstagramSquare className="text-[#6E42E5] text-2xl cursor-pointer hover:scale-110 transition" />
             </div>
           </div>
 
@@ -48,13 +48,13 @@ const Footer = () => {
           <div className="w-full md:w-1/4 space-y-3">
             <h1 className="text-2xl font-bold text-white">Contact Us</h1>
             <p className="text-gray-300 text-lg flex items-center gap-3">
-              <FaLocationDot className="text-[#2161F5]" /> 123 Business Street, Suite 100, New York, NY 10001
+              <FaLocationDot className="text-[#6E42E5]" /> 123 Business Street, Suite 100, New York, NY 10001
             </p>
             <p className="text-gray-300 text-lg flex items-center gap-3">
-              <FaPhoneAlt className="text-[#2161F5]" /> +1 (234) 567-890
+              <FaPhoneAlt className="text-[#6E42E5]" /> +1 (234) 567-890
             </p>
             <p className="text-gray-300 text-lg flex items-center gap-3">
-              <IoMail className="text-[#2161F5]" /> info@manpower.com
+              <IoMail className="text-[#6E42E5]" /> info@manpower.com
             </p>
           </div>
         </div>

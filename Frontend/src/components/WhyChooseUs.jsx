@@ -17,33 +17,33 @@ const WhyChooseUs = () => {
             <div className='w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8'>
                 <div className='flex flex-col bg-gray-700 shadow rounded-xl hover:bg-gray-600 hover:scale-105 p-6'>
                     <div className='rounded-full p-1'>
-                        <GrUserManager size={60} className='bg-[#2161F5] text-white p-2 rounded-full' />
+                        <GrUserManager size={60} className='bg-[#6E42E5] text-white p-2 rounded-full' />
                     </div>
                     <h2 className='mt-4 text-xl text-white font-bold'>Experienced Staff</h2>
                     <p className='text-md text-gray-300 mt-4'>Highly trained and vetted professionals with years of industry experience.</p>
-                    <p className='flex items-center gap-1 text-lg mt-5 text-white'> <IoIosCheckmarkCircleOutline className='text-[#2161F5]  text-2xl font-bold' /> Rigorous Background Checks</p>
-                    <p className='flex items-center gap-1 text-lg text-white'> <IoIosCheckmarkCircleOutline className='text-[#2161F5]  text-2xl font-bold' /> Regular Training Programs</p>
+                    <p className='flex items-center gap-1 text-lg mt-5 text-white'> <IoIosCheckmarkCircleOutline className='text-[#6E42E5]  text-2xl font-bold' /> Rigorous Background Checks</p>
+                    <p className='flex items-center gap-1 text-lg text-white'> <IoIosCheckmarkCircleOutline className='text-[#6E42E5]  text-2xl font-bold' /> Regular Training Programs</p>
                 </div>
 
                 <div className='flex flex-col bg-gray-700 hover:bg-gray-600  shadow rounded-xl hover:scale-105 p-6'>
                     <div className='rounded-full p-1'>
-                        <LuClock4 size={60} className='bg-[#2161F5] text-white p-2 rounded-full' />
+                        <LuClock4 size={60} className='bg-[#6E42E5] text-white p-2 rounded-full' />
                     </div>
                     <h2 className='mt-4 text-xl text-white font-bold'>24/7 Availability</h2>
                     <p className='text-md text-gray-300 mt-4'>Round-the-clock service with immediate response to your requirements.</p>
-                    <p className='flex items-center gap-1 text-lg mt-5 text-white'> <IoIosCheckmarkCircleOutline className='text-[#2161F5] text-2xl font-bold' />Emergency Response</p>
-                    <p className='flex items-center gap-1 text-lg text-white'> <IoIosCheckmarkCircleOutline className='text-[#2161F5] text-2xl font-bold' />Flexible Scheduling</p>
+                    <p className='flex items-center gap-1 text-lg mt-5 text-white'> <IoIosCheckmarkCircleOutline className='text-[#6E42E5] text-2xl font-bold' />Emergency Response</p>
+                    <p className='flex items-center gap-1 text-lg text-white'> <IoIosCheckmarkCircleOutline className='text-[#6E42E5] text-2xl font-bold' />Flexible Scheduling</p>
                 </div>
 
 
                 <div className='flex flex-col bg-gray-700 hover:bg-gray-600  shadow rounded-xl hover:scale-105 p-6'>
                     <div className='rounded-full p-1'>
-                        <IoShieldHalfOutline size={60} className='bg-[#2161F5] text-white p-2 rounded-full' />
+                        <IoShieldHalfOutline size={60} className='bg-[#6E42E5] text-white p-2 rounded-full' />
                     </div>
                     <h2 className='mt-4 text-xl text-white font-bold'>Fully Insured</h2>
                     <p className='text-md text-gray-300 mt-4'>Complete coverage and liability protection for your peace of mind.</p>
-                    <p className='flex items-center gap-1 text-lg mt-5 text-white'> <IoIosCheckmarkCircleOutline className='text-[#2161F5]  text-2xl font-bold' />Liability Coverage</p>
-                    <p className='flex items-center gap-1 text-lg text-white'> <IoIosCheckmarkCircleOutline className='text-[#2161F5]  text-2xl font-bold' />Worker's Compensation</p>
+                    <p className='flex items-center gap-1 text-lg mt-5 text-white'> <IoIosCheckmarkCircleOutline className='text-[#6E42E5]  text-2xl font-bold' />Liability Coverage</p>
+                    <p className='flex items-center gap-1 text-lg text-white'> <IoIosCheckmarkCircleOutline className='text-[#6E42E5]  text-2xl font-bold' />Worker's Compensation</p>
                 </div>
             </div>
 
@@ -61,10 +61,10 @@ const WhyChooseUs = () => {
 
                 <div className='flex flex-col bg-gray-700 hover:bg-gray-600  shadow rounded-xl hover:scale-105 p-6'>
                     <h2 className='mt-4 text-xl text-white font-bold'>Customer Support</h2>
-                    <p className='flex items-center gap-1 text-lg mt-5 text-white'> <FaHeadphonesAlt className='text-[#2161F5] text-xl font-bold' />Dedicated Account Manager</p>
-                    <p className='flex items-center gap-1 text-lg text-white'> <FaHeadphonesAlt className='text-[#2161F5] text-xl font-bold' />
+                    <p className='flex items-center gap-1 text-lg mt-5 text-white'> <FaHeadphonesAlt className='text-[#6E42E5] text-xl font-bold' />Dedicated Account Manager</p>
+                    <p className='flex items-center gap-1 text-lg text-white'> <FaHeadphonesAlt className='text-[#6E42E5] text-xl font-bold' />
                     Quick Query Resolution</p>
-                    <p className='flex items-center gap-1 text-lg text-white'> <FaHeadphonesAlt className='text-[#2161F5] text-xl font-bold' />
+                    <p className='flex items-center gap-1 text-lg text-white'> <FaHeadphonesAlt className='text-[#6E42E5] text-xl font-bold' />
                     Regular Service Updates</p>
                 </div>
 

@@ -34,7 +34,7 @@ const BlogPreview = () => {
         {BlogPosts.find((post) => post.id === parseInt(id, 10) - 1) && (
           <Link
             to={`/blog/${parseInt(id, 10) - 1}`}
-            className="mr-6 flex justify-center items-center text-lg gap-2 bg-[#2161F5] text-white p-2 rounded-lg"
+            className="mr-6 flex justify-center items-center text-lg gap-2 bg-[#6E42E5] text-white p-2 rounded-lg"
           >
             <IoIosArrowDropleftCircle /> Prev
           </Link>
@@ -43,7 +43,7 @@ const BlogPreview = () => {
         {BlogPosts.find((post) => post.id === parseInt(id, 10) + 1) && (
           <Link
             to={`/blog/${parseInt(id, 10) + 1}`}
-            className="flex justify-center items-center text-lg gap-2 bg-[#2161F5] text-white p-2 rounded-lg"
+            className="flex justify-center items-center text-lg gap-2 bg-[#6E42E5] text-white p-2 rounded-lg"
           >
             Next <IoIosArrowDroprightCircle />
           </Link>

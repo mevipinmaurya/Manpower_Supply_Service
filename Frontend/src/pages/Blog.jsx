@@ -26,7 +26,7 @@ const Blog = () => {
                                 {categories.map((category) => (
                                     <li
                                         key={category}
-                                        className={`w-fit cursor-pointer hover:border-b-[1px] hover:text-gray-900 font-medium ${selectedTag === category ? 'text-black font-semibold border-b-[1px]' : ''
+                                        className={`w-fit cursor-pointer hover:border-b-[1px] hover:text-gray-900 font-medium ${selectedTag === category ? 'text-[#6E42E5] font-bold border-b-[1px]' : ''
                                             }`}
                                         onClick={() => {
                                             setSelectedTag(category);
@@ -67,7 +67,7 @@ const Blog = () => {
                                             <p className='mt-5 text-lg'>{items.description.substring(0, 100)}...</p>
                                             <Link
                                                 to={`/blog/${items.id}`}
-                                                className='text-[#2161F5] w-fit border-b-[1px] text-bold text-xl cursor-pointer mt-2'
+                                                className='text-[#6E42E5] w-fit border-b-[1px] font-semibold text-xl cursor-pointer mt-2'
                                             >
                                                 read more
                                             </Link>
