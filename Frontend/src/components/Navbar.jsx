@@ -20,7 +20,7 @@ const Navbar = () => {
         <ul className='hidden md:flex text-md md:text-lg gap-6 items-center'>
           <Link to={'/about'} className={`cursor-pointer ${location.pathname === '/about' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>About Us</Link>
           <Link to={'/services'} className={`cursor-pointer ${location.pathname === '/services' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Services</Link>
-          <Link to={'/pricing'} className={`cursor-pointer ${location.pathname === '/pricing' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Pricing</Link>
+          {/* <Link to={'/pricing'} className={`cursor-pointer ${location.pathname === '/pricing' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Pricing</Link> */}
           {
             location.pathname === '/' ?
               <Link to={'/about'} className={`cursor-pointer ${location.pathname === '/about' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}> <ScrollLink to="faq" smooth={true} duration={500}>FAQs</ScrollLink></Link>
@@ -46,7 +46,7 @@ const Navbar = () => {
         <ul className='md:hidden flex flex-col items-center gap-4 mt-4 p-4 rounded-lg shadow-lg'>
           <Link to={'/about'} className={`cursor-pointer ${location.pathname === '/about' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>About Us</Link>
           <Link to={'/services'} className={`cursor-pointer ${location.pathname === '/services' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Services</Link>
-          <Link to={'/pricing'} className={`cursor-pointer ${location.pathname === '/pricing' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Pricing</Link>
+          {/* <Link to={'/pricing'} className={`cursor-pointer ${location.pathname === '/pricing' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}>Pricing</Link> */}
           {
             location.pathname === '/'?
             <Link to={'/about'} className={`cursor-pointer ${location.pathname === '/about' ? 'bg-[#2161F5] text-white font-bold p-2 rounded' : 'text-black'}`}> <ScrollLink to="faq" smooth={true} duration={500}>FAQs</ScrollLink></Link>

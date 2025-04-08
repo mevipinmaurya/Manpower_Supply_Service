@@ -175,7 +175,7 @@ const Services = () => {
                   &times;
                 </button>
                 {
-                  filteredServices.filter(post => post.id === serviceId).map((items, index) => (
+                  ServicePosts.filter(post => post.id === serviceId).map((items, index) => (
                     <div className='w-full flex justify-center  flex-col'>
                       <img src={items.image} alt="" className='w-[50%] h-[50%] flex justify-center m-auto' />
                       <h1 className='font-semibold text-xl mt-4'>{items.title}</h1>
