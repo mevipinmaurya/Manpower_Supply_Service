@@ -12,7 +12,7 @@ const Admin = () => {
             </div>
             <div className='w-5/6 flex justify-center'>
                 <Routes>
-                    <Route path='/addservice' element={<AddServices />} />
+                    <Route path='/' element={<AddServices />} />
                     <Route path='/addblog' element={<AddBlog />} />
                 </Routes>
             </div>
