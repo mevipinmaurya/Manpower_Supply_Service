@@ -4,6 +4,8 @@ import databaseConnection from './config/database.js';
 import cookieParser from 'cookie-parser';
 import userRouter from './routes/UserRouter.js';
 import cors from 'cors'
+import blogRouter from './routes/BlogRouter.js';
+import serviceRouter from './routes/ServiceRouter.js';
 
 const app = express();
 
@@ -31,13 +33,11 @@ app.use(cors(corsOption))
 
 // API Endpoints
 app.use("/api/v1/user", userRouter)
+app.use("/api/v1/admin", blogRouter)
+app.use("/api/v1/admin", serviceRouter)
 
 app.get("/", (req, res)=>{
     res.send("I am root");
-})
-
-app.get("/home", (req, res)=>{
-    res.send("I am home wala page")
 })
 
 app.listen(port, ()=>{

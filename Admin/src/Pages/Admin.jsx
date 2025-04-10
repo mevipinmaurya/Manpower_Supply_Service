@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom'
 import AddServices from '../Components/AddServices'
 import AddBlog from '../Components/AddBlog'
 import Sidebar from '../Components/Sidebar'
+import BlogLists from '../Components/BlogLists'
+import ServiceLists from '../Components/ServiceLists'
 
 const Admin = () => {
     return (
@@ -14,6 +16,8 @@ const Admin = () => {
                 <Routes>
                     <Route path='/' element={<AddServices />} />
                     <Route path='/addblog' element={<AddBlog />} />
+                    <Route path='/bloglist' element={<BlogLists />} />
+                    <Route path='/servicelist' element={<ServiceLists />} />
                 </Routes>
             </div>
         </div>
