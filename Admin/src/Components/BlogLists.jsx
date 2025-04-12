@@ -43,25 +43,94 @@ const BlogLists = () => {
         setFilteredList(sorted);
     };
 
-    const deleteBlog  = async (id)=>{
-        const res = await axios.post(`${URL}/api/v1/admin/delblog`, {id : id})
+    const deleteBlog = async (id) => {
+        const res = await axios.post(`${URL}/api/v1/admin/delblog`, { id: id })
         await fetchAPI()
-        if(res.data.success){
+        if (res.data.success) {
             toast.success(res.data.message)
-        }else{
+        } else {
             toast.error(res.data.message)
         }
     }
 
+
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [blogId, setBlogId] = useState(0);
+
+    // 2. Function to handle opening the modal
+    const openModal = (id) => {
+        setIsModalOpen(true);
+        setBlogId(id);
+    };
+
+    // 3. Function to handle closing the modal
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
+
+    const [image, setImage] = useState("");
+    const imageHandler = (e) => {
+        e.preventDefault()
+        setImage(e.target.value);
+    };
+
+
+    const url = "http://localhost:3000"
+
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [category, setCategory] = useState("");
+
+    const updateSubmitHandler = async (e) => {
+        e.preventDefault();
+
+        const res = await axios.post(`${url}/api/v1/admin/updateblog`,
+            {
+                "title": title,
+                "description": description,
+                "category": category,
+                "image": image,
+                "id" : blogId
+            }
+        )
+
+        if (res.data.success) {
+            setTitle("");
+            setImage("");
+            setCategory("All");
+            setDescription("");
+            setIsModalOpen(false)
+
+            toast.success(res.data.message)
+        }
+        else {
+            toast.error(res.data.message)
+        }
+    }
+
+
+
     useEffect(() => {
         fetchAPI();
-    }, []);
+        if (isModalOpen) {
+            const blog = filteredList.find(post => post._id === blogId);
+            if (blog) {
+                setTitle(blog.title);
+                setDescription(blog.description);
+                setCategory(blog.category);
+                setImage(blog.image);
+            }
+        }
+    }, [isModalOpen, blogId]);
 
     return (
         <div className="w-full min-h-screen bg-gray-50 px-4 py-6">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center bg-white shadow rounded-lg p-4">
                     <h3 className="text-2xl font-semibold mb-2 sm:mb-0">List of Blogs</h3>
+                    <input type="search" placeholder='Search' className='p-2 px-2 text-sm border border-gray-300 outline-none rounded-md' />
                     <select
                         value={filter}
                         onChange={(e) => handleFilterChange(e.target.value)}
@@ -99,14 +168,75 @@ const BlogLists = () => {
 
                                 <div className="flex justify-start lg:justify-end items-center gap-4 w-full lg:w-1/3">
                                     <button title="Edit">
-                                        <FaEdit className="text-xl cursor-pointer hover:scale-115 text-indigo-600 hover:text-indigo-800 transition" />
+                                        <FaEdit onClick={() => openModal(blog._id)} className="text-xl cursor-pointer hover:scale-115 text-indigo-600 hover:text-indigo-800 transition" />
                                     </button>
                                     <button title="Delete">
-                                        <MdDelete onClick={()=> deleteBlog(blog._id)} className="text-xl cursor-pointer hover:scale-115 text-red-600 hover:text-red-800 transition" />
+                                        <MdDelete onClick={() => deleteBlog(blog._id)} className="text-xl cursor-pointer hover:scale-115 text-red-600 hover:text-red-800 transition" />
                                     </button>
                                 </div>
                             </div>
                         ))
+                    )}
+
+
+                    {/* Openning modal for updating the blog */}
+                    {isModalOpen && (
+                        <div className="fixed inset-0 bg-transparent flex items-center justify-center z-50">
+                            <div className="bg-gray-100 w-[95%] md:1/2 lg:w-1/3 p-5 rounded-lg shadow-lg relative">
+                                <button
+                                    onClick={closeModal}
+                                    className="absolute top-2 cursor-pointer right-2 text-gray-600 hover:text-black text-3xl"
+                                >
+                                    &times;
+                                </button>
+                                {
+                                    filteredList.filter(post => post._id === blogId).map((items, index) => (
+                                        <>
+                                            <h2 className='text-2xl font-bold mb-5'>Update Blog</h2>
+                                            <form onSubmit={updateSubmitHandler} className='w-full gap-3 flex justify-center items-center flex-col'>
+                                                <div className='w-full flex gap-2 flex-col'>
+                                                    <label htmlFor="">Category</label>
+                                                    <select value={category} onChange={(e) => setCategory(e.target.value)} name='category' className='border p-2 rounded-md border-gray-300' required>
+                                                        <option value="all">All</option>
+                                                        <option value="happyHomes">Happy Homes</option>
+                                                        <option value="interior">Interior</option>
+                                                        <option value="wellness">Wellness</option>
+                                                        <option value="beauty">Beauty</option>
+                                                    </select>
+                                                </div>
+                                                <div className='w-full flex gap-2 flex-col'>
+                                                    <label htmlFor="">Title</label>
+                                                    <input value={title} onChange={(e) => setTitle(e.target.value)} className='border p-2 rounded-md border-gray-300' type="text" required />
+                                                </div>
+                                                <div className='w-full flex gap-2 flex-col'>
+                                                    <label htmlFor="">Description</label>
+                                                    <textarea value={description} onChange={(e) => setDescription(e.target.value)} className='border p-2 rounded-md resize-none border-gray-300' rows="5" cols="10" required></textarea>
+                                                </div>
+                                                <div className='w-full flex gap-2 flex-col'>
+                                                    <label htmlFor="">
+                                                        Upload Image (URL)
+                                                    </label>
+                                                    <input value={image} onChange={imageHandler} type="text" className='border border-gray-300 rounded-md p-2' required />
+                                                    {
+                                                        image
+                                                            ? <img
+                                                                src={image}
+                                                                className='w-[100px] rounded-md p-2 cursor-pointer'
+                                                                alt="Upload Preview"
+                                                            />
+                                                            :
+                                                            <></>
+                                                    }
+                                                </div>
+                                                <div className='w-full flex flex-col mb-5'>
+                                                    <button className='p-2 bg-[#6E42E5] text-white rounded-md cursor-pointer'>Update Blog</button>
+                                                </div>
+                                            </form>
+                                        </>
+                                    ))
+                                }
+                            </div>
+                        </div>
                     )}
                 </div>
             </div>

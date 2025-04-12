@@ -57,4 +57,30 @@ const delService = async (req, res)=>{
     }
 }
 
-export { addService, getService, delService }
+// Update service
+const updateService = async (req, res) => {
+    try {
+        const { title, description, category, image, price } = req.body;
+        const service = await ServiceModel.findByIdAndUpdate(req.body.id, {
+            title: title,
+            description: description,
+            category: category,
+            image: image,
+            price : price
+        })
+
+        await service.save();
+        res.json({
+            success : true,
+            message : "service Updated"
+        })
+    } catch (error) {
+        res.json({
+            success : false,
+            message : "Failed to update !"
+        })
+    }
+}
+
+
+export { addService, getService, delService, updateService }
