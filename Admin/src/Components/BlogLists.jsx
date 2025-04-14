@@ -1,5 +1,5 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { toast } from 'react-hot-toast';
@@ -9,6 +9,7 @@ const BlogLists = () => {
     const [list, setList] = useState([]);
     const [filteredList, setFilteredList] = useState([]);
     const [filter, setFilter] = useState('');
+    const [searchVal, setSearchVal] = useState("");
 
     const fetchAPI = async () => {
         try {
@@ -43,6 +44,21 @@ const BlogLists = () => {
         setFilteredList(sorted);
     };
 
+    const fetchFilteredData = (value) => {
+        setSearchVal(value);
+
+        if (value.trim() === "") {
+            setFilteredList(list); // Reset to original full list
+            return;
+        }
+
+        const result = list.filter(item =>
+            item.title.toLowerCase().includes(value.toLowerCase()) ||
+            item.category.toLowerCase().includes(value.toLowerCase())
+        );
+        setFilteredList(result);
+    };
+
     const deleteBlog = async (id) => {
         const res = await axios.post(`${URL}/api/v1/admin/delblog`, { id: id })
         await fetchAPI()
@@ -53,22 +69,17 @@ const BlogLists = () => {
         }
     }
 
-
-
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [blogId, setBlogId] = useState(0);
 
-    // 2. Function to handle opening the modal
     const openModal = (id) => {
         setIsModalOpen(true);
         setBlogId(id);
     };
 
-    // 3. Function to handle closing the modal
     const closeModal = () => {
         setIsModalOpen(false);
     };
-
 
     const [image, setImage] = useState("");
     const imageHandler = (e) => {
@@ -76,8 +87,7 @@ const BlogLists = () => {
         setImage(e.target.value);
     };
 
-
-    const url = "http://localhost:3000"
+    const url = "http://localhost:3000";
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -92,7 +102,7 @@ const BlogLists = () => {
                 "description": description,
                 "category": category,
                 "image": image,
-                "id" : blogId
+                "id": blogId
             }
         )
 
@@ -110,10 +120,11 @@ const BlogLists = () => {
         }
     }
 
-
-
     useEffect(() => {
         fetchAPI();
+    }, []);
+
+    useEffect(() => {
         if (isModalOpen) {
             const blog = filteredList.find(post => post._id === blogId);
             if (blog) {
@@ -130,7 +141,13 @@ const BlogLists = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center bg-white shadow rounded-lg p-4">
                     <h3 className="text-2xl font-semibold mb-2 sm:mb-0">List of Blogs</h3>
-                    <input type="search" placeholder='Search' className='p-2 px-2 text-sm border border-gray-300 outline-none rounded-md' />
+                    <input
+                        value={searchVal}
+                        onChange={(e) => fetchFilteredData(e.target.value)}
+                        type="search"
+                        placeholder='Search'
+                        className='p-2 px-2 text-sm border border-gray-300 outline-none rounded-md'
+                    />
                     <select
                         value={filter}
                         onChange={(e) => handleFilterChange(e.target.value)}
@@ -178,8 +195,6 @@ const BlogLists = () => {
                         ))
                     )}
 
-
-                    {/* Openning modal for updating the blog */}
                     {isModalOpen && (
                         <div className="fixed inset-0 bg-transparent flex items-center justify-center z-50">
                             <div className="bg-gray-100 w-[95%] md:1/2 lg:w-1/3 p-5 rounded-lg shadow-lg relative">
@@ -213,19 +228,15 @@ const BlogLists = () => {
                                                     <textarea value={description} onChange={(e) => setDescription(e.target.value)} className='border p-2 rounded-md resize-none border-gray-300' rows="5" cols="10" required></textarea>
                                                 </div>
                                                 <div className='w-full flex gap-2 flex-col'>
-                                                    <label htmlFor="">
-                                                        Upload Image (URL)
-                                                    </label>
+                                                    <label htmlFor="">Upload Image (URL)</label>
                                                     <input value={image} onChange={imageHandler} type="text" className='border border-gray-300 rounded-md p-2' required />
                                                     {
-                                                        image
-                                                            ? <img
-                                                                src={image}
-                                                                className='w-[100px] rounded-md p-2 cursor-pointer'
-                                                                alt="Upload Preview"
-                                                            />
-                                                            :
-                                                            <></>
+                                                        image &&
+                                                        <img
+                                                            src={image}
+                                                            className='w-[100px] rounded-md p-2 cursor-pointer'
+                                                            alt="Upload Preview"
+                                                        />
                                                     }
                                                 </div>
                                                 <div className='w-full flex flex-col mb-5'>

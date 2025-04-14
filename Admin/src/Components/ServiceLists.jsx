@@ -9,6 +9,7 @@ const ServiceLists = () => {
   const [list, setList] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [filter, setFilter] = useState('');
+  const [searchVal, setSearchVal] = useState("");
 
   const fetchAPI = async () => {
     try {
@@ -68,6 +69,22 @@ const ServiceLists = () => {
   // 3. Function to handle closing the modal
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+
+  const fetchFilteredData = (value) => {
+    setSearchVal(value);
+
+    if (value.trim() === "") {
+      setFilteredList(list); // Reset to original full list
+      return;
+    }
+
+    const result = list.filter(item =>
+      item.title.toLowerCase().includes(value.toLowerCase()) ||
+      item.category.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredList(result);
   };
 
 
@@ -132,7 +149,13 @@ const ServiceLists = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center bg-white shadow rounded-lg p-4">
           <h3 className="text-2xl font-semibold mb-2 sm:mb-0">List of Services we offer</h3>
-          <input type="search" placeholder='Search' className='p-2 px-2 text-sm border border-gray-300 outline-none rounded-md' />
+          <input
+            value={searchVal}
+            onChange={(e) => fetchFilteredData(e.target.value)}
+            type="search"
+            placeholder='Search'
+            className='p-2 px-2 text-sm border border-gray-300 outline-none rounded-md'
+          />
           <select
             value={filter}
             onChange={(e) => handleFilterChange(e.target.value)}
