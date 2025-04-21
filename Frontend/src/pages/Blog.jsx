@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
-import { BlogPosts } from '../utils/BlogPosts';
 import { Link } from 'react-router-dom';
+import useGetAllBlogs from '../hooks/useGetAllBlogs';
+import { useSelector } from 'react-redux';
+import store from '../redux/store';
 
 const Blog = () => {
+    useGetAllBlogs()
+
+    const {blogs} = useSelector(store => store.blogs)
+
     const [selectedTag, setSelectedTag] = useState('All');
 
     const categories = ['All', 'Happy Homes', 'Interior', 'Wellness', 'Beauty'];
 
     const filteredPosts =
         selectedTag === 'All'
-            ? BlogPosts
-            : BlogPosts.filter((post) => post.tag === selectedTag);
+            ? blogs
+            : blogs.filter((post) => post.category === selectedTag);
 
     return (
         <div className='w-full px-4'>
@@ -63,10 +69,10 @@ const Blog = () => {
                                         </div>
                                         <div className='md:w-2/3 p-3 flex flex-col'>
                                             <h2 className='font-bold text-xl sm:text-xl md:text-2xl'>{items.title}</h2>
-                                            <p className='bg-amber-100 p-2 rounded-lg w-fit mt-1'>{items.tag}</p>
+                                            <p className='bg-amber-100 p-2 rounded-lg w-fit mt-1'>{items.category}</p>
                                             <p className='mt-5 text-lg'>{items.description.substring(0, 100)}...</p>
                                             <Link
-                                                to={`/blog/${items.id}`}
+                                                to={`/blog/${items._id}`}
                                                 className='text-[#6E42E5] w-fit border-b-[1px] font-semibold text-xl cursor-pointer mt-2'
                                             >
                                                 read more

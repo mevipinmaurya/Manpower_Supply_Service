@@ -13,7 +13,7 @@ const BlogLists = () => {
 
     const fetchAPI = async () => {
         try {
-            const res = await axios.get(`${URL}/api/v1/admin/getblog`);
+            const res = await axios.get(`${URL}/api/v1/user/getblog`);
             if (res.data.success) {
                 setList(res.data.message);
                 setFilteredList(res.data.message);
@@ -60,7 +60,7 @@ const BlogLists = () => {
     };
 
     const deleteBlog = async (id) => {
-        const res = await axios.post(`${URL}/api/v1/admin/delblog`, { id: id })
+        const res = await axios.post(`${URL}/api/v1/user/delblog`, { id: id })
         await fetchAPI()
         if (res.data.success) {
             toast.success(res.data.message)
@@ -96,7 +96,7 @@ const BlogLists = () => {
     const updateSubmitHandler = async (e) => {
         e.preventDefault();
 
-        const res = await axios.post(`${url}/api/v1/admin/updateblog`,
+        const res = await axios.post(`${url}/api/v1/user/updateblog`,
             {
                 "title": title,
                 "description": description,

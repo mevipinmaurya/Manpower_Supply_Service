@@ -1,10 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit'
-// import { appReducer } from './appSlice.js';
-
+import { configureStore } from "@reduxjs/toolkit";
+import servicesReducer from "./servicesSlice.js"
+import blogsReducer from "./blogsSlice.js"
 
 const store = configureStore({
   reducer: {
-      // appSlice : appReducer
+    services: servicesReducer,
+    blogs : blogsReducer
   }
 })
 

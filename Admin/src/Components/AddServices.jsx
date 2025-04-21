@@ -19,7 +19,7 @@ const AddServices = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        const res = await axios.post(`${URL}/api/v1/admin/addservice`, {
+        const res = await axios.post(`${URL}/api/v1/user/addservice`, {
             "title": title,
             "description": description,
             "image": image,

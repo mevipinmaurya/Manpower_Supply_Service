@@ -25,21 +25,21 @@ app.use(express.json())
 app.use(cookieParser())
 // app.use(cors())
 const corsOption = {
-    origin : "http://localhost:5173",
-    credentials : true,
+    origin: ["http://localhost:5173", "http://localhost:5174"],
+    credentials: true,
 }
 app.use(cors(corsOption))
 
 
 // API Endpoints
 app.use("/api/v1/user", userRouter)
-app.use("/api/v1/admin", blogRouter)
-app.use("/api/v1/admin", serviceRouter)
+app.use("/api/v1/user", blogRouter)
+app.use("/api/v1/user", serviceRouter)
 
-app.get("/", (req, res)=>{
+app.get("/", (req, res) => {
     res.send("I am root");
 })
 
-app.listen(port, ()=>{
+app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 })

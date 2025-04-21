@@ -24,7 +24,7 @@ const AddBlog = () => {
 
         // console.log(formData)
 
-        const res = await axios.post(`${url}/api/v1/admin/addblog`,
+        const res = await axios.post(`${url}/api/v1/user/addblog`,
             {
                 "title": title,
                 "description": description,

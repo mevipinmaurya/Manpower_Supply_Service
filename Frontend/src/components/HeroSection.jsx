@@ -1,6 +1,7 @@
 import React from 'react';
 import electrician from "../assets/electrician.jpg";
 import heroImage from "../assets/hero_Image.png";
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
     return (
@@ -13,9 +14,10 @@ const HeroSection = () => {
                 <p className='text-gray-600 mt-4 text-base sm:text-lg'>
                     We provide top-notch manpower solutions tailored to your business needs. Our experienced team ensures efficiency and reliability at every step, delivering exceptional results you can trust.
                 </p>
-                <button className='bg-[#6E42E5] cursor-pointer hover:bg-[#6E42E5] text-white font-semibold py-3 px-4 sm:py-4 sm:px-6 rounded-full w-[180px] sm:w-[200px] mt-6 text-xs sm:text-sm'>
-                    Get Started
-                </button>
+                <Link to={"/services"}>
+                    <button className='bg-[#6E42E5] cursor-pointer hover:bg-[#6E42E5] text-white font-semibold py-3 px-4 sm:py-4 sm:px-6 rounded-full w-[180px] sm:w-[200px] mt-6 text-xs sm:text-sm'>
+                        Get Started
+                    </button></Link>
             </div>
 
             {/* Right Section - Image Placeholder */}

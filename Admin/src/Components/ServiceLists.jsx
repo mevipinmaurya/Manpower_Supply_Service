@@ -13,7 +13,7 @@ const ServiceLists = () => {
 
   const fetchAPI = async () => {
     try {
-      const res = await axios.get(`${URL}/api/v1/admin/getservice`);
+      const res = await axios.get(`${URL}/api/v1/user/getservice`);
       if (res.data.success) {
         setList(res.data.message);
         setFilteredList(res.data.message);
@@ -47,7 +47,7 @@ const ServiceLists = () => {
   };
 
   const deleteService = async (id) => {
-    const res = await axios.post(`${URL}/api/v1/admin/delservice`, { id: id })
+    const res = await axios.post(`${URL}/api/v1/user/delservice`, { id: id })
     await fetchAPI()
     if (res.data.success) {
       toast.success(res.data.message)
@@ -105,7 +105,7 @@ const ServiceLists = () => {
   const updateSubmitHandler = async (e) => {
     e.preventDefault();
 
-    const res = await axios.post(`${url}/api/v1/admin/updateservice`,
+    const res = await axios.post(`${url}/api/v1/user/updateservice`,
       {
         "title": title,
         "description": description,
