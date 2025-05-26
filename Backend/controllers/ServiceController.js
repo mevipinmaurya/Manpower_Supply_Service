@@ -1,9 +1,9 @@
-import ServiceModel from "../models/ServiceModel.js"
+import Service from "../models/ServiceModel.js"
 
 
 // Add Service
 const addService = async (req, res) => {
-    const addService = new ServiceModel({
+    const addService = new Service({
         title: req.body.title,
         description: req.body.description,
         image: req.body.image,
@@ -28,7 +28,7 @@ const addService = async (req, res) => {
 // Get Service
 const getService = async (req, res) => {
     try {
-        const services = await ServiceModel.find({})
+        const services = await Service.find({})
         res.json({
             success: true,
             message: services
@@ -44,7 +44,7 @@ const getService = async (req, res) => {
 // Delete Service
 const delService = async (req, res)=>{
     try {
-        await ServiceModel.findByIdAndDelete(req.body.id);
+        await Service.findByIdAndDelete(req.body.id);
         res.json({
             success : true,
             message : "Service Deleted"
@@ -61,7 +61,7 @@ const delService = async (req, res)=>{
 const updateService = async (req, res) => {
     try {
         const { title, description, category, image, price } = req.body;
-        const service = await ServiceModel.findByIdAndUpdate(req.body.id, {
+        const service = await Service.findByIdAndUpdate(req.body.id, {
             title: title,
             description: description,
             category: category,

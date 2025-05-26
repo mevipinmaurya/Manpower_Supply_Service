@@ -6,6 +6,7 @@ import userRouter from './routes/UserRouter.js';
 import cors from 'cors'
 import blogRouter from './routes/BlogRouter.js';
 import serviceRouter from './routes/ServiceRouter.js';
+import cartRouter from './routes/CartRouters.js';
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use(cors(corsOption))
 app.use("/api/v1/user", userRouter)
 app.use("/api/v1/user", blogRouter)
 app.use("/api/v1/user", serviceRouter)
+app.use("/api/v1/user", cartRouter)
 
 app.get("/", (req, res) => {
     res.send("I am root");

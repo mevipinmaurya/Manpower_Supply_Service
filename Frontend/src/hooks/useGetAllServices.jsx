@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 import { useEffect } from "react";
 import { setServices } from "../redux/servicesSlice";
 
-
 const useGetAllServices = () => {
     const dispatch = useDispatch();
 

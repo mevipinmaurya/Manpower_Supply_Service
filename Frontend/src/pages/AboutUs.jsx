@@ -6,6 +6,7 @@ import aboutMid from "../assets/about-mid.png";
 import repair from "../assets/repair.svg"
 import maintain from "../assets/maintain.svg"
 import { RiPaintBrushFill } from "react-icons/ri";
+import { Link } from 'react-router-dom';
 
 const AboutUs = () => {
   return (
@@ -23,7 +24,9 @@ const AboutUs = () => {
             <h2 className='font-bold text-3xl text-left sm:text-4xl md:text-6xl text-amber-800'>
               Comprehensive Manpower Supply and Maintenance Solutions</h2>
             <p className='mt-5 text-lg text-gray-700'>Empowering businesses with qualified and experienced workforce across various industries. Whether you need temporary, contract-based, or permanent staffing, we provide tailored manpower solutions to ensure efficiency and success.</p>
-            <button className='bg-[#6E42E5] mt-6 w-[200px] p-3 rounded-xl text-white font-bold'>Contact Us</button>
+            <Link to={"/contact"}>
+              <button className='bg-[#6E42E5] mt-6 w-[200px] p-3 rounded-xl text-white font-bold'>Contact Us</button>
+            </Link>
           </div>
           <div className='md:order-2 order-1 md:w-[35%] flex justify-center'>
             <img src={sliderFoot} alt='Repair Services' className='w-full max-w-56 md:max-w-full px-6 m-3 h-auto' />

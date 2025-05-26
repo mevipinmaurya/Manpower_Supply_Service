@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import databaseConnection from './database.js';
-import ServiceModel from '../models/ServiceModel.js';
+import Service from '../models/Service.js';
 
 // Setup __dirname in ES Modules
 const __filename = fileURLToPath(import.meta.url);
@@ -232,8 +232,8 @@ const seedServices = async () => {
         await databaseConnection();
 
         console.log('📝 Seeding blog posts...');
-        await ServiceModel.deleteMany();
-        await ServiceModel.insertMany(ServicePosts);
+        await Service.deleteMany();
+        await Service.insertMany(ServicePosts);
         console.log('✅ Blog posts seeded successfully!');
     } catch (err) {
         console.error('❌ Error seeding blogs:', err);

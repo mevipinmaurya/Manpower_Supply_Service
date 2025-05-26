@@ -16,14 +16,7 @@ const Login = () => {
     // console.log(password);
 
     try {
-      const res = await axios.post(`${USER_API_ENDPOINT}/login`, {
-        email, password
-      }, {
-        headers: {
-          'content-type': "application/json"
-        },
-        withCredentials: true
-      })
+      const res = await axios.post(`${USER_API_ENDPOINT}/login`, { email, password }, { withCredentials: true });
 
       if (res.data.success) {
         console.log("Logged In")
@@ -67,7 +60,7 @@ const Login = () => {
             <Input
               label="Password: "
               type="password"
-              placeholder = "password"
+              placeholder="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

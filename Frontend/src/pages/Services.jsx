@@ -51,7 +51,7 @@ const Services = () => {
     : services.filter(post => post.category === selectedService);
 
   const totalPrice = services.reduce(
-    (acc, item) => added.includes(item.id) ? acc + parseInt(item.price) : acc,
+    (acc, item) => added.includes(item._id) ? acc + parseInt(item.price) : acc,
     0
   );
 
@@ -101,12 +101,12 @@ const Services = () => {
                             View Details
                           </p>
                           <div className='flex items-center gap-2'>
-                            {added.includes(items.id) ? (
-                              <p onClick={() => toggleService(items.id)} className='bg-[#6E42E5] cursor-pointer border border-[#6E42E5] text-white rounded-md p-[5px] flex gap-2 justify-center items-center'>
+                            {added.includes(items._id) ? (
+                              <p onClick={() => toggleService(items._id)} className='bg-[#6E42E5] cursor-pointer border border-[#6E42E5] text-white rounded-md p-[5px] flex gap-2 justify-center items-center'>
                                 Added <MdOutlineDownloadDone />
                               </p>
                             ) : (
-                              <p onClick={() => toggleService(items.id)} className='bg-gray-50 cursor-pointer border border-[#6E42E5] text-[#6E42E5] rounded-md p-[5px] flex gap-2 justify-center items-center'>
+                              <p onClick={() => toggleService(items._id)} className='bg-gray-50 cursor-pointer border border-[#6E42E5] text-[#6E42E5] rounded-md p-[5px] flex gap-2 justify-center items-center'>
                                 Add <IoIosAddCircleOutline />
                               </p>
                             )}
@@ -140,7 +140,7 @@ const Services = () => {
                 <div className='w-full'>
                   <div className='hidden md:block overflow-y-auto h-[70vh] scrollbar-hidden p-4'>
                     {services.map((item, index) =>
-                      added.includes(item.id) ? (
+                      added.includes(item._id) ? (
                         <div key={index}>
                           <div onClick={() => openModal(item.id)} className='hover:bg-purple-100 cursor-pointer w-full flex justify-between p-2 items-center'>
                             <div>
@@ -187,12 +187,12 @@ const Services = () => {
                 <p className='flex items-center mt-2'><MdStars className='text-yellow-600 text-lg' />&nbsp;({items.review} 1k+ Reviews)</p>
                 <p className='mt-2'><span className='text-yellow-700'>Price</span>: ₹ {items.price}</p>
                 <p className='mt-2 text-sm'>{items.description}</p>
-                {added.includes(items.id) ? (
-                  <p onClick={() => toggleService(items.id)} className='bg-[#6E42E5] w-fit mt-4 cursor-pointer border border-[#6E42E5] text-white rounded-md p-[5px] flex gap-2 justify-center items-center'>
+                {added.includes(items._id) ? (
+                  <p onClick={() => toggleService(items._id)} className='bg-[#6E42E5] w-fit mt-4 cursor-pointer border border-[#6E42E5] text-white rounded-md p-[5px] flex gap-2 justify-center items-center'>
                     Added <MdOutlineDownloadDone />
                   </p>
                 ) : (
-                  <p onClick={() => toggleService(items.id)} className='bg-gray-50 w-fit mt-4 cursor-pointer border border-[#6E42E5] text-[#6E42E5] rounded-md p-[5px] flex gap-2 justify-center items-center'>
+                  <p onClick={() => toggleService(items._id)} className='bg-gray-50 w-fit mt-4 cursor-pointer border border-[#6E42E5] text-[#6E42E5] rounded-md p-[5px] flex gap-2 justify-center items-center'>
                     Add <IoIosAddCircleOutline />
                   </p>
                 )}
