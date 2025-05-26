@@ -12,8 +12,11 @@ import { useSelector } from 'react-redux';
 import store from '../redux/store';
 
 const Services = () => {
-  // Call the custom hook directly
+  // Calling the custom hook directly
   useGetAllServices();
+
+  // Accessing user from userSlice
+  const user = useSelector(state => state.user.user)
 
   const { services } = useSelector(state => state.services);
   const [added, setAdded] = useState([]);
@@ -32,9 +35,12 @@ const Services = () => {
   };
 
   const toggleService = (id) => {
-    setAdded((prev) =>
-      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
-    );
+    // setAdded((prev) =>
+    //   prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    // );
+
+    // console.log(user)
+    
   };
 
   const openModal = (id) => {

@@ -97,7 +97,7 @@ const removeFromCart = async (req, res) => {
             existingItem.quantity--;
         } else {
             // Remove the item from the array
-            cart.items = cart.items.filter(     // Filter function is used to create the new array that includes only the elements that pass a certain condition
+            cart.items = cart.items.filter(     // Filter() function is used to create the new array that includes only the elements that pass a certain condition
                 (item) => item.serviceId.toString() !== serviceId
             );
         }
@@ -110,7 +110,7 @@ const removeFromCart = async (req, res) => {
         });
 
     } catch (error) {
-        console.error(error);
+        // console.error(error);
         res.status(500).json({
             success: false,
             message: "Internal server error"

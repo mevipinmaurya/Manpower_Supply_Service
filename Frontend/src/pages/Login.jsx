@@ -4,11 +4,15 @@ import Input from '../components/Input'
 import { USER_API_ENDPOINT } from '../utils/Constants'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { useDispatch } from 'react-redux'
+import { setUser } from '../redux/userSlice'
 
 const Login = () => {
   const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,10 +25,11 @@ const Login = () => {
       if (res.data.success) {
         console.log("Logged In")
         navigate("/");
+        dispatch(setUser(res.data.user));
+        localStorage.setItem("token", res.data.token);
         toast.success(res.data.message)
       }
     } catch (error) {
-      // console.log("Error");
       toast.error(error.response.data.message)
     }
   }

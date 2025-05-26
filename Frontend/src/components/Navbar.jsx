@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import logo from "../assets/logo1.svg";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Link as ScrollLink } from "react-scroll";
+import { useDispatch } from 'react-redux';
+import { clearUser } from '../redux/userSlice';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate()
+
+  const token = localStorage.getItem("token");
+  const dispatch = useDispatch();
+  const logoutHandler = () => {
+    localStorage.removeItem("token")
+    dispatch(clearUser())
+    navigate("/")
+  }
+
 
   return (
     <nav className='w-full p-2 bg-white text-black'>
@@ -28,9 +40,16 @@ const Navbar = () => {
           }
           <Link to={'/contact'} className={`cursor-pointer ${location.pathname === '/contact' ? 'text-black font-bold p-2 rounded' : 'text-black'}`}>Contact Us</Link>
           <Link to={'/blog'} className={`cursor-pointer ${location.pathname === '/blog' ? 'text-black font-bold p-2 rounded' : 'text-black'}`}>Blogs</Link>
-          <Link to={'/login'}>
-            <button className={`rounded-4xl w-[100px] p-2 cursor-pointer font-bold ${location.pathname === '/login' ? 'text-black' : 'bg-gray-300 text-black'}`}>Login</button>
-          </Link>
+          {
+            token == null
+              ? <Link to={'/login'}>
+                <button className={`rounded-4xl w-[100px] p-2 cursor-pointer font-bold ${location.pathname === '/login' ? 'bg-[#6E42E5] text-white' : 'bg-[#6E42E5] text-white'}`}>Login</button>
+              </Link>
+              :
+              <button>
+                <button onClick={logoutHandler} className={`rounded-4xl w-[100px] p-2 cursor-pointer font-bold bg-[#6E42E5] text-white`}>Logout</button>
+              </button>
+          }
         </ul>
 
         {/* Mobile Menu Toggle (Visible on Small Screens) */}
@@ -48,15 +67,20 @@ const Navbar = () => {
           <Link to={'/services'} className={`cursor-pointer ${location.pathname === '/services' ? 'text-black font-bold p-2 rounded' : 'text-black'}`}>Services</Link>
           {/* <Link to={'/pricing'} className={`cursor-pointer ${location.pathname === '/pricing' ? 'text-black font-bold p-2 rounded' : 'text-black'}`}>Pricing</Link> */}
           {
-            location.pathname === '/'?
-            <Link to={'/about'} className={`cursor-pointer ${location.pathname === '/about' ? 'text-black font-bold p-2 rounded' : 'text-black'}`}> <ScrollLink to="faq" smooth={true} duration={500}>FAQs</ScrollLink></Link>
-            :<></>
+            location.pathname === '/' ?
+              <Link to={'/about'} className={`cursor-pointer ${location.pathname === '/about' ? 'text-black font-bold p-2 rounded' : 'text-black'}`}> <ScrollLink to="faq" smooth={true} duration={500}>FAQs</ScrollLink></Link>
+              : <></>
           }
           <Link to={'/contact'} className={`cursor-pointer ${location.pathname === '/contact' ? 'text-black font-bold p-2 rounded' : 'text-black'}`}>Contact Us</Link>
           <Link to={'/blog'} className={`cursor-pointer ${location.pathname === '/blog' ? 'text-black font-bold p-2 rounded' : 'text-black'}`}>Blogs</Link>
-          <Link to={'/login'}>
-            <button className={`rounded-4xl w-[100px] p-2 cursor-pointer font-bold ${location.pathname === '/login' ? 'text-black' : 'bg-gray-300 text-black'}`}>Login</button>
-          </Link>
+          {
+            token == null
+              ? <Link to={'/login'}>
+                <button className={`rounded-4xl w-[100px] p-2 cursor-pointer font-bold ${location.pathname === '/login' ? 'bg-[#6E42E5] text-white' : 'bg-[#6E42E5] text-white'}`}>Login</button>
+              </Link>
+              :
+              <button onClick={logoutHandler} className={`rounded-4xl w-[100px] p-2 cursor-pointer font-bold bg-[#6E42E5] text-white`}>Logout</button>
+          }
         </ul>
       )}
     </nav>
