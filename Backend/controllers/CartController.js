@@ -5,8 +5,8 @@ import Service from '../models/ServiceModel.js'
 // Adding Items to cart
 const addToCart = async (req, res) => {
     try {
-        const userId = req.user;
-        const { serviceId, quantity } = req.body;
+        // const userId = req.user;
+        const { userId, serviceId } = req.body;
         const service = await Service.findById(serviceId);
         if (!service) {
             return res.json({
@@ -20,19 +20,11 @@ const addToCart = async (req, res) => {
         if (!cart) {
             cart = new Cart({ userId, items: [] })
         }
-        const existingItem = cart.items.find(
-            (item) => item.serviceId.toString() === serviceId
-        )
-
-        if (existingItem) {
-            existingItem.quantity += quantity;
-        } else {
-            cart.items.push({
-                serviceId,
-                quantity,
-                priceAtAddition: price
-            })
-        }
+        
+        cart.items.push({
+            serviceId,
+            priceAtAddition: price
+        })
 
         cart.updateAt = new Date();
         await cart.save()
@@ -40,7 +32,6 @@ const addToCart = async (req, res) => {
         res.json({
             success: true,
             message: "Item added to cart",
-            userId: `the userId is ${userId}`,
             cart,
         })
 
@@ -93,14 +84,10 @@ const removeFromCart = async (req, res) => {
             });
         }
 
-        if (existingItem.quantity > 1) {
-            existingItem.quantity--;
-        } else {
-            // Remove the item from the array
-            cart.items = cart.items.filter(     // Filter() function is used to create the new array that includes only the elements that pass a certain condition
-                (item) => item.serviceId.toString() !== serviceId
-            );
-        }
+        // Remove the item from the array
+        cart.items = cart.items.filter(     // Filter() function is used to create the new array that includes only the elements that pass a certain condition
+            (item) => item.serviceId.toString() !== serviceId
+        );
 
         await cart.save();
 
@@ -119,4 +106,37 @@ const removeFromCart = async (req, res) => {
 };
 
 
-export { addToCart, removeFromCart }
+// Fetching cart items (for logged in users)
+const fetchCartItems = async (req, res) => {
+    try {
+        const { userId } = req.body;
+        if (!userId) {
+            return res.json({
+                success: false,
+                message: "Access Denied"
+            })
+        }
+
+        const userCart = await Cart.findOne({ userId })
+        if (!userCart) {
+            return res.json({
+                success: false,
+                message: "user not found!"
+            })
+        }
+
+        const userCartItems = userCart.items;
+        res.json({
+            success: true,
+            message: "User cart items fetched",
+            userCart: userCartItems
+        })
+    } catch (error) {
+        res.json({
+            success: false,
+            message: "Some error occured"
+        })
+    }
+}
+
+export { addToCart, removeFromCart, fetchCartItems }

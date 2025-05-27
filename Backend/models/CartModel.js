@@ -8,7 +8,7 @@ const cartItemSchema = new Schema({
         ref: 'Service',
         required: true
     },
-    quantity: { type: Number, default: 1, required: true },
+    // quantity: { type: Number, default: 1, required: true },
     priceAtAddition: { type: Number, required: true },
 })
 

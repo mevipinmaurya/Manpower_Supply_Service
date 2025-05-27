@@ -1,25 +1,42 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../components/Blog.css';
-import { GiThornedArrow, GiVacuumCleaner, GiMechanicGarage } from "react-icons/gi";
-import { MdStars, MdOutlinePlumbing, MdOutlineElectricalServices, MdOutlineDownloadDone } from "react-icons/md";
+import {
+  GiThornedArrow,
+  GiVacuumCleaner,
+  GiMechanicGarage,
+} from "react-icons/gi";
+import {
+  MdStars,
+  MdOutlinePlumbing,
+  MdOutlineElectricalServices,
+  MdOutlineDownloadDone,
+} from "react-icons/md";
 import { RiPsychotherapyFill } from "react-icons/ri";
 import { IoIosArrowRoundForward, IoIosAddCircleOutline } from "react-icons/io";
 import { HiShoppingCart } from "react-icons/hi";
 
 import cart from "../assets/cart.png";
 import useGetAllServices from '../hooks/useGetAllServices';
-import { useSelector } from 'react-redux';
-import store from '../redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { USER_API_ENDPOINT } from '../utils/Constants';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import {
+  setCartItems,
+  setError,
+  setLoading,
+} from "../redux/cartSlice";
 
 const Services = () => {
-  // Calling the custom hook directly
   useGetAllServices();
 
-  // Accessing user from userSlice
-  const user = useSelector(state => state.user.user)
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user.user);
   const { services } = useSelector(state => state.services);
-  const [added, setAdded] = useState([]);
+  const { cartItems } = useSelector(state => state.cart);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [serviceId, setServiceId] = useState(0);
   const [selectedService, setSelectedService] = useState('All');
@@ -34,14 +51,60 @@ const Services = () => {
     Therapist: <RiPsychotherapyFill className="text-3xl text-black" />,
   };
 
-  const toggleService = (id) => {
-    // setAdded((prev) =>
-    //   prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
-    // );
+  useEffect(() => {
+    const fetchCart = async () => {
+      if (!user?.userId) return;
+      dispatch(setLoading(true));
+      try {
+        const res = await axios.post(`${USER_API_ENDPOINT}/fetchcartitems`, {
+          userId: user.userId
+        }, { withCredentials: true });
 
-    // console.log(user)
-    
+        if (res.data.success) {
+          dispatch(setCartItems(res.data.userCart || []));
+        } else {
+          dispatch(setError(res.data.message));
+        }
+      } catch (error) {
+        dispatch(setError(error.response?.data?.message || "Error fetching cart"));
+      } finally {
+        dispatch(setLoading(false));
+      }
+    };
+
+    fetchCart();
+  }, [user, dispatch]);
+
+
+  // For adding and deleting items in cart
+  const toggleService = async (id) => {
+    if (!user?.userId) {
+      toast.error("Login First");
+      return navigate("/login");
+    }
+
+    try {
+      // Check if the service is already in the cart
+      const isInCart = cartItems.some(item => item.serviceId === id);
+
+      const endpoint = isInCart ? "removefromcart" : "addtocart";
+      const res = await axios.post(`${USER_API_ENDPOINT}/${endpoint}`, {
+        userId: user.userId,
+        serviceId: id,
+      }, { withCredentials: true });
+
+      if (res.data.success) {
+        toast.success(res.data.message);
+        dispatch(setCartItems(res.data.updatedCart || []));
+      } else {
+        toast.error(res.data.message || "Something went wrong!");
+      }
+
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Error updating cart");
+    }
   };
+
 
   const openModal = (id) => {
     setIsModalOpen(true);
@@ -52,14 +115,15 @@ const Services = () => {
     setIsModalOpen(false);
   };
 
+  const isAddedToCart = (id) => {
+    return cartItems.some(item => item.serviceId === id);
+  };
+
+  const totalPrice = cartItems.reduce((acc, item) => acc + item.priceAtAddition, 0);
+
   const filteredServices = selectedService === 'All'
     ? services
     : services.filter(post => post.category === selectedService);
-
-  const totalPrice = services.reduce(
-    (acc, item) => added.includes(item._id) ? acc + parseInt(item.price) : acc,
-    0
-  );
 
   return (
     <div className='w-full h-auto lg:h-screen overflow-hidden px-4'>
@@ -107,13 +171,13 @@ const Services = () => {
                             View Details
                           </p>
                           <div className='flex items-center gap-2'>
-                            {added.includes(items._id) ? (
-                              <p onClick={() => toggleService(items._id)} className='bg-[#6E42E5] cursor-pointer border border-[#6E42E5] text-white rounded-md p-[5px] flex gap-2 justify-center items-center'>
-                                Added <MdOutlineDownloadDone />
+                            {isAddedToCart(items._id) ? (
+                              <p onClick={() => toggleService(items._id)} className='bg-red-500 cursor-pointer border border-red-500 text-white rounded-md p-[5px] flex gap-2 justify-center items-center'>
+                                Remove <MdOutlineDownloadDone />
                               </p>
                             ) : (
                               <p onClick={() => toggleService(items._id)} className='bg-gray-50 cursor-pointer border border-[#6E42E5] text-[#6E42E5] rounded-md p-[5px] flex gap-2 justify-center items-center'>
-                                Add <IoIosAddCircleOutline />
+                                Add Service <IoIosAddCircleOutline />
                               </p>
                             )}
                           </div>
@@ -136,28 +200,35 @@ const Services = () => {
               <div className='relative'>
                 <HiShoppingCart className='text-[#6E42E5] text-2xl' />
                 <span className='absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full px-1'>
-                  {added.length}
+                  {cartItems.length}
                 </span>
               </div>
             </div>
 
             <div className='w-full flex justify-center items-center'>
-              {added.length > 0 ? (
+              {cartItems.length > 0 ? (
                 <div className='w-full'>
                   <div className='hidden md:block overflow-y-auto h-[70vh] scrollbar-hidden p-4'>
-                    {services.map((item, index) =>
-                      added.includes(item._id) ? (
+                    {cartItems.map((item, index) => {
+
+                      const matchedServices = services.find(
+                        (service) => service._id === item.serviceId
+                      );
+
+                      if (!matchedServices) return null;
+
+                      return (
                         <div key={index}>
-                          <div onClick={() => openModal(item.id)} className='hover:bg-purple-100 cursor-pointer w-full flex justify-between p-2 items-center'>
+                          <div onClick={() => openModal(matchedServices._id)} className='hover:bg-purple-100 cursor-pointer w-full flex justify-between p-2 items-center'>
                             <div>
-                              <p>{item.title}</p>
-                              <p>₹ {item.price}</p>
+                              <p>{matchedServices.title}</p>
+                              <p>₹ {matchedServices.price}</p>
                             </div>
-                            <img src={item.image} alt={item.title} className='w-[20%] rounded-md h-[20%]' />
+                            <img src={matchedServices.image} alt={matchedServices.title} className='w-[20%] rounded-md h-[20%]' />
                           </div>
                         </div>
-                      ) : null
-                    )}
+                      )
+                    })}
                   </div>
                   <div className='w-full flex justify-center items-center'>
                     <div className='mb-3 w-[95%] flex justify-between items-center bg-[#6E42E5] rounded-md p-4 text-white mt-5'>
@@ -193,13 +264,13 @@ const Services = () => {
                 <p className='flex items-center mt-2'><MdStars className='text-yellow-600 text-lg' />&nbsp;({items.review} 1k+ Reviews)</p>
                 <p className='mt-2'><span className='text-yellow-700'>Price</span>: ₹ {items.price}</p>
                 <p className='mt-2 text-sm'>{items.description}</p>
-                {added.includes(items._id) ? (
-                  <p onClick={() => toggleService(items._id)} className='bg-[#6E42E5] w-fit mt-4 cursor-pointer border border-[#6E42E5] text-white rounded-md p-[5px] flex gap-2 justify-center items-center'>
-                    Added <MdOutlineDownloadDone />
+                {isAddedToCart(items._id) ? (
+                  <p onClick={() => toggleService(items._id)} className='bg-red-500 w-fit mt-4 cursor-pointer border border-red-500 text-white rounded-md p-[5px] flex gap-2 justify-center items-center'>
+                    Remove <MdOutlineDownloadDone />
                   </p>
                 ) : (
                   <p onClick={() => toggleService(items._id)} className='bg-gray-50 w-fit mt-4 cursor-pointer border border-[#6E42E5] text-[#6E42E5] rounded-md p-[5px] flex gap-2 justify-center items-center'>
-                    Add <IoIosAddCircleOutline />
+                    Add Service<IoIosAddCircleOutline />
                   </p>
                 )}
               </div>

@@ -11,7 +11,10 @@ const userSlice = createSlice({
         },
         clearUser : (state)=>{
             state.user = null
-        }
+        },
+        // userCart : (state, action)=>{
+        //     state.
+        // }
     }
 })
 
