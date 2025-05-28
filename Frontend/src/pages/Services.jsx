@@ -21,7 +21,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { USER_API_ENDPOINT } from '../utils/Constants';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   setCartItems,
   setError,
@@ -235,7 +235,7 @@ const Services = () => {
                   <div className='w-full flex justify-center items-center'>
                     <div className='mb-3 w-[95%] flex justify-between items-center bg-[#6E42E5] rounded-md p-4 text-white mt-5'>
                       <p>₹ {totalPrice}.00</p>
-                      <p className='cursor-pointer'>View Cart</p>
+                      <Link to={"/cart"} className='cursor-pointer underline'>View Cart</Link>
                     </div>
                   </div>
                 </div>

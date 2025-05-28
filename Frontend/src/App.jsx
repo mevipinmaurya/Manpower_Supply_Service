@@ -13,6 +13,7 @@ import { Toaster } from "react-hot-toast"
 import Blog from './pages/Blog.jsx'
 import BlogPreview from './components/BlogPreview.jsx'
 import CartPreview from './pages/CartPreview.jsx'
+import Cart from './pages/Cart.jsx'
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/blog/:id" element={<BlogPreview />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
+        <Route path='/cart' element={<Cart />} />
       </Routes>
       <Footer />
     </BrowserRouter>
