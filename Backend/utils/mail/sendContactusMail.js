@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: process.env.ADMIN_EMAIL,
         pass: process.env.ADMIN_EMAIL_APP_PASSWORD
-    } 
+    }
 })
 
 // console.log("Email user:", process.env.ADMIN_EMAIL);
@@ -54,7 +54,7 @@ Your Website Contact Form
         return info;
     } catch (error) {
         console.error("Error sending email:", error);
-        throw error; 
+        throw error;
     }
 }
 

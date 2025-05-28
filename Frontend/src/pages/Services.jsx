@@ -211,6 +211,8 @@ const Services = () => {
               {cartItems.length > 0 ? (
                 <div className='w-full'>
                   <div className='hidden md:block overflow-y-auto h-[70vh] scrollbar-hidden p-4'>
+                    
+                    
                     {cartItems.map((item, index) => {
 
                       const matchedServices = services.find(
@@ -231,6 +233,8 @@ const Services = () => {
                         </div>
                       )
                     })}
+
+
                   </div>
                   <div className='w-full flex justify-center items-center'>
                     <div className='mb-3 w-[95%] flex justify-between items-center bg-[#6E42E5] rounded-md p-4 text-white mt-5'>
