@@ -3,20 +3,22 @@ import { Menu, X } from 'lucide-react';
 import logo from "../assets/logo1.svg";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Link as ScrollLink } from "react-scroll";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { clearUser } from '../redux/userSlice';
+import { clearCart } from '../redux/cartSlice';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate()
 
-  const token = localStorage.getItem("token");
+  const user = useSelector((state) => state.user.user);
+
   const dispatch = useDispatch();
   const logoutHandler = () => {
     localStorage.removeItem("token")
     dispatch(clearUser())
-    navigate("/")
+    dispatch(clearCart())
+    // navigate("/")
   }
 
 
@@ -41,7 +43,7 @@ const Navbar = () => {
           <Link to={'/contact'} className={`cursor-pointer ${location.pathname === '/contact' ? 'text-black font-bold p-2 rounded' : 'text-black'}`}>Contact Us</Link>
           <Link to={'/blog'} className={`cursor-pointer ${location.pathname === '/blog' ? 'text-black font-bold p-2 rounded' : 'text-black'}`}>Blogs</Link>
           {
-            token == null
+            user == null
               ? <Link to={'/login'}>
                 <button className={`rounded-4xl w-[100px] p-2 cursor-pointer font-bold ${location.pathname === '/login' ? 'bg-[#6E42E5] text-white' : 'bg-[#6E42E5] text-white'}`}>Login</button>
               </Link>
@@ -74,7 +76,7 @@ const Navbar = () => {
           <Link to={'/contact'} className={`cursor-pointer ${location.pathname === '/contact' ? 'text-black font-bold p-2 rounded' : 'text-black'}`}>Contact Us</Link>
           <Link to={'/blog'} className={`cursor-pointer ${location.pathname === '/blog' ? 'text-black font-bold p-2 rounded' : 'text-black'}`}>Blogs</Link>
           {
-            token == null
+            user == null
               ? <Link to={'/login'}>
                 <button className={`rounded-4xl w-[100px] p-2 cursor-pointer font-bold ${location.pathname === '/login' ? 'bg-[#6E42E5] text-white' : 'bg-[#6E42E5] text-white'}`}>Login</button>
               </Link>

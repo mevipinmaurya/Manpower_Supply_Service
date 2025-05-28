@@ -32,7 +32,7 @@ const addToCart = async (req, res) => {
         res.json({
             success: true,
             message: "Item added to cart",
-            cart,
+            updatedCart : cart.items
         })
 
     } catch (error) {
@@ -93,7 +93,8 @@ const removeFromCart = async (req, res) => {
 
         return res.json({
             success: true,
-            message: "Cart updated successfully."
+            message: "Cart updated successfully.",
+            updatedCart : cart.items
         });
 
     } catch (error) {

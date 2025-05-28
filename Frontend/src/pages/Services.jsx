@@ -96,6 +96,8 @@ const Services = () => {
       if (res.data.success) {
         toast.success(res.data.message);
         dispatch(setCartItems(res.data.updatedCart || []));
+        // console.log("Updated cart is")
+        // console.log(res.data.updatedCart)
       } else {
         toast.error(res.data.message || "Something went wrong!");
       }
