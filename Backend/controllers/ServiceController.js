@@ -1,5 +1,5 @@
 import Service from "../models/ServiceModel.js"
-
+import { sendContactUsMail } from "../utils/mail/sendContactusMail.js"
 
 // Add Service
 const addService = async (req, res) => {
@@ -42,17 +42,17 @@ const getService = async (req, res) => {
 }
 
 // Delete Service
-const delService = async (req, res)=>{
+const delService = async (req, res) => {
     try {
         await Service.findByIdAndDelete(req.body.id);
         res.json({
-            success : true,
-            message : "Service Deleted"
+            success: true,
+            message: "Service Deleted"
         })
     } catch (error) {
         res.json({
-            success : false,
-            message : "Some error occured"
+            success: false,
+            message: "Some error occured"
         })
     }
 }
@@ -66,21 +66,49 @@ const updateService = async (req, res) => {
             description: description,
             category: category,
             image: image,
-            price : price
+            price: price
         })
 
         await service.save();
         res.json({
-            success : true,
-            message : "service Updated"
+            success: true,
+            message: "service Updated"
         })
     } catch (error) {
         res.json({
-            success : false,
-            message : "Failed to update !"
+            success: false,
+            message: "Failed to update !"
         })
     }
 }
 
+// contact us service
+const contactusService = async (req, res) => {
+    try {
+        const { fullName, email, number, message } = req.body;
 
-export { addService, getService, delService, updateService }
+        // mail 
+        const response = await sendContactUsMail(
+            email,
+            fullName,
+            number,
+            message
+        )
+        
+        // console.log(response)
+
+        res.json({
+            success: true,
+            message: "contact us mail send"
+        })
+
+    } catch (error) {
+        console.log(error)
+        res.json({
+            success: false,
+            message: "error during contactUs service!"
+        })
+    }
+}
+
+export { addService, getService, delService, updateService, contactusService }
