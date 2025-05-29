@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { IoIosRemoveCircle } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { USER_API_ENDPOINT } from '../utils/Constants'
 import { setCartItems, setError, setLoading } from '../redux/cartSlice'
@@ -9,7 +8,6 @@ import toast from 'react-hot-toast';
 import cart from "../assets/cart.png";
 
 const CartItems = () => {
-    const navigate = useNavigate()
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.user)
     const { cartItems } = useSelector(state => state.cart)
@@ -32,6 +30,39 @@ const CartItems = () => {
         } catch (error) {
             toast.error(error.response?.data?.message || "Error updating cart");
         }
+    }
+
+    // Function for checkout Handling
+    const checkoutHandler = async (amount) => {
+        // console.log(amount)
+        const { data: keyData } = await axios.get(`${USER_API_ENDPOINT}/getkey`);
+        const { key } = keyData;
+        // console.log(key)
+        const { data: orderData } = await axios.post(`${USER_API_ENDPOINT}/payment/process`, { amount })
+        const { order } = orderData
+        // console.log(order)
+
+        const options = {
+            key,
+            amount,
+            currency: 'INR',
+            name: 'Manpower Service Supply',
+            description: 'Manpower Service Supply Razorpay Integration',
+            order_id: order.id,
+            callback_url: 'http://localhost:3000/api/v1/user/payment/verification', // success URL
+            prefill: {
+                name: 'Vipin Maurya',
+                email: 'vipinblogpsot@gmail.com',
+                contact: '6389441466'
+            },
+            theme: {
+                color: '#6E42E5'
+            },
+        };
+
+        const rzp = new Razorpay(options);
+        rzp.open();
+
     }
 
     useEffect(() => {
@@ -155,7 +186,7 @@ const CartItems = () => {
                             <h1 className='text-lg'>₹ {totalPrice + deliveryFee}</h1>
                         </div>
                         <div className='mt-6'>
-                            <button onClick={() => navigate("/order")} className='btn hover:bg-black cursor-pointer text-white w-full p-3 rounded-xl bg-[#6E42E5]'>
+                            <button onClick={() => checkoutHandler(totalPrice + deliveryFee)} className='btn hover:bg-black cursor-pointer text-white w-full p-3 rounded-xl bg-[#6E42E5]'>
                                 PROCEED TO CHECKOUT
                             </button>
                         </div>

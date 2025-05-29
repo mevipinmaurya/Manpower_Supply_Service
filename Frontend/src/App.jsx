@@ -14,6 +14,7 @@ import Blog from './pages/Blog.jsx'
 import BlogPreview from './components/BlogPreview.jsx'
 import CartPreview from './pages/CartPreview.jsx'
 import Cart from './pages/Cart.jsx'
+import PaymentSuccess from './components/PaymentSuccess.jsx'
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/paymentSuccess' element={<PaymentSuccess />} />
       </Routes>
       <Footer />
     </BrowserRouter>

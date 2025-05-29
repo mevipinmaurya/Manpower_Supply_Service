@@ -23,7 +23,7 @@ const Login = () => {
       const res = await axios.post(`${USER_API_ENDPOINT}/login`, { email, password }, { withCredentials: true });
 
       if (res.data.success) {
-        console.log("Logged In")
+        // console.log("Logged In")
         navigate("/");
         dispatch(setUser(res.data.user));
         localStorage.setItem("token", res.data.token);
