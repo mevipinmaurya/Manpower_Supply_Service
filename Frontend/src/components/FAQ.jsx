@@ -42,10 +42,10 @@ const FAQ = () => {
     };
 
     return (
-        <div id="faq" className='flex w-full flex-col mt-20 bg-black gap-4 justify-center items-center p-16'>
-            <h1 className='text-4xl font-bold text-white mb-10'>Frequently Asked Questions</h1>
+        <div id="faq" className='flex w-full flex-col mt-14 lg:mt-20 bg-black gap-4 justify-center items-center p-10 lg:p-16'>
+            <h1 className='text-3xl lg:text-4xl font-bold text-white mb-10'>Frequently Asked Questions</h1>
 
-            <div className="flex justify-center max-w-[80%]">
+            <div className="flex justify-center max-w-[95%] md:max-w-[80%]">
                 <div className="space-y-4">
                     {faqs.map((faq, index) => (
                         <div key={index} className="border-b border-[#6E42E5]  pb-3">
@@ -75,7 +75,7 @@ const FAQ = () => {
                                 }</span>
                             </button>
                             <div
-                                className={`text-md mt-4 dark:text-zinc-300 transition-all duration-300 ${openIndex === index ? "max-h-40 opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+                                className={`text-md mt-4 dark:text-zinc-300 transition-all duration-300 ${openIndex === index ? "h-auto opacity-100" : "max-h-0 opacity-0 overflow-hidden"
                                     }`}
                             >
                                 {faq.answer}

@@ -51,11 +51,11 @@ const Carousel = () => {
     };
 
     return (
-        <div className='flex w-full flex-col mt-10 gap-4 justify-center items-center p-16'>
-            <h1 className='text-4xl font-bold text-[#000000]'>What our clients say</h1>
-            <p className='text-lg mb-10 text-gray-700 text-center w-[60%]'>Discover why businesses and homeowners trust our manpower services.</p>
+        <div className='flex w-full flex-col mt-7 lg:mt-10 gap-4 justify-center items-center p-10 lg:p-16'>
+            <h1 className='text-3xl lg:text-4xl font-bold text-[#000000] '>What our clients say</h1>
+            <p className='text-lg mb-10 text-gray-700 text-center w-[90%] lg:w-[60%]'>Discover why businesses and homeowners trust our manpower services.</p>
 
-            <div className="relative w-full max-w-6xl mx-auto mt-8 px-4">
+            <div className="relative w-full max-w-6xl mx-auto mt-5 lg:mt-8 px-4">
                 {/* Carousel Container */}
                 <div className="overflow-hidden">
                     <div

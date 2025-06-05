@@ -2,11 +2,12 @@ import React from "react";
 import { FaFacebook, FaLinkedin, FaInstagramSquare, FaPhoneAlt } from "react-icons/fa";
 import { FaSquareTwitter, FaLocationDot } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div className="w-full bg-black">
-      <div className="w-full text-white p-16">
+      <div className="w-full text-white p-10 lg:p-16">
         {/* Responsive Container */}
         <div className="w-full mt-14 max-w-6xl mx-auto flex flex-col md:flex-row flex-wrap justify-between gap-5">
 
@@ -27,21 +28,20 @@ const Footer = () => {
           {/* Quick Links */}
           <div className="w-full md:w-1/5 space-y-2">
             <h1 className="text-2xl font-bold text-white">Quick Links</h1>
-            <p className="text-gray-300 text-lg hover:text-white cursor-pointer">About Us</p>
-            <p className="text-gray-300 text-lg hover:text-white cursor-pointer">Our Services</p>
-            <p className="text-gray-300 text-lg hover:text-white cursor-pointer">Pricing</p>
-            <p className="text-gray-300 text-lg hover:text-white cursor-pointer">FAQs</p>
-            <p className="text-gray-300 text-lg hover:text-white cursor-pointer">Contact Us</p>
+            <Link to={"/about"}><p className="text-gray-300 text-lg hover:text-white cursor-pointer">About Us</p></Link>
+            <Link to={"/services"}><p className="text-gray-300 text-lg hover:text-white cursor-pointer">Our Services</p></Link>
+            <Link to={"/blog"}><p className="text-gray-300 text-lg hover:text-white cursor-pointer">Blogs</p></Link>
+            <Link to={"/contact"}><p className="text-gray-300 text-lg hover:text-white cursor-pointer">Contact Us</p></Link>
           </div>
 
           {/* Our Services */}
           <div className="w-full md:w-1/5 space-y-2">
             <h1 className="text-2xl font-bold text-white">Our Services</h1>
-            <p className="text-gray-300 text-lg hover:text-white cursor-pointer">Security Guards</p>
-            <p className="text-gray-300 text-lg hover:text-white cursor-pointer">House Keeping</p>
-            <p className="text-gray-300 text-lg hover:text-white cursor-pointer">Event Security</p>
-            <p className="text-gray-300 text-lg hover:text-white cursor-pointer">Corporate Security</p>
-            <p className="text-gray-300 text-lg hover:text-white cursor-pointer">Residential Cleaning</p>
+            <Link to={"/services"}><p className="text-gray-300 text-lg hover:text-white cursor-pointer">Cleaner</p></Link>
+            <Link to={"/services"}><p className="text-gray-300 text-lg hover:text-white cursor-pointer">Electrician</p></Link>
+            <Link to={"/services"}><p className="text-gray-300 text-lg hover:text-white cursor-pointer">Plumber</p></Link>
+            <Link to={"/services"}><p className="text-gray-300 text-lg hover:text-white cursor-pointer">Mechanic</p></Link>
+            <Link to={"/services"}><p className="text-gray-300 text-lg hover:text-white cursor-pointer">Therapist</p></Link>
           </div>
 
           {/* Contact Info */}

@@ -23,9 +23,9 @@ const AboutUs = () => {
           <div className='md:order-1 order-2 md:w-[65%] flex flex-col items-center md:items-start text-center md:text-left'>
             <h2 className='font-bold text-3xl text-left sm:text-4xl md:text-6xl text-amber-800'>
               Comprehensive Manpower Supply and Maintenance Solutions</h2>
-            <p className='mt-5 text-lg text-gray-700'>Empowering businesses with qualified and experienced workforce across various industries. Whether you need temporary, contract-based, or permanent staffing, we provide tailored manpower solutions to ensure efficiency and success.</p>
+            <p className='mt-5 text-lg text-gray-700 text-left'>Empowering businesses with qualified and experienced workforce across various industries. Whether you need temporary, contract-based, or permanent staffing, we provide tailored manpower solutions to ensure efficiency and success.</p>
             <Link to={"/contact"}>
-              <button className='bg-[#6E42E5] mt-6 w-[200px] p-3 rounded-xl text-white font-bold'>Contact Us</button>
+              <button className='bg-[#6E42E5] mt-6 w-[200px] p-3 rounded-xl text-white font-bold '>Contact Us</button>
             </Link>
           </div>
           <div className='md:order-2 order-1 md:w-[35%] flex justify-center'>
@@ -79,26 +79,26 @@ const AboutUs = () => {
         <div className='w-full md:w-[85%] flex flex-col md:flex-row items-center'>
           <div className='md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left'>
             <h2 className='font-bold text-3xl sm:text-4xl md:text-5xl text-amber-800'>About Us</h2>
-            <p className='mt-5 text-lg'>We provide skilled, semi-skilled, and general workforce solutions tailored to your industry needs. From temporary staffing to permanent placements, our reliable manpower ensures smooth operations and business growth. Whether you need temporary, contract-based, or permanent staffing, we provide tailored manpower solutions to ensure efficiency and success.</p>
+            <p className='mt-5 text-md lg:text-lg'>We provide skilled, semi-skilled, and general workforce solutions tailored to your industry needs. From temporary staffing to permanent placements, our reliable manpower ensures smooth operations and business growth. Whether you need temporary, contract-based, or permanent staffing, we provide tailored manpower solutions to ensure efficiency and success.</p>
             {/* <button className='bg-[#000000] mt-6 w-[200px] p-3 rounded-xl text-white font-bold'>Read More</button> */}
           </div>
-          <div className='md:w-1/2 flex justify-center '>
-            <img src={aboutMid} alt='About Us' className='p-10 w-full max-w-sm mt-4 rounded md:max-w-full h-auto' />
+          <div className='md:w-1/2 flex justify-center rounded'>
+            <img src={aboutMid} alt='About Us' className='lg:p-10 p-5 w-full max-w-sm mt-4 rounded md:max-w-full h-auto' />
           </div>
         </div>
       </div>
 
       {/* Services Section */}
-      <div className='w-full flex flex-col md:flex-row items-center justify-center gap-10  px-6 py-10'>
+      <div className='w-full flex flex-col md:flex-row items-center justify-center gap-10 px-6 py-10'>
         <div className='w-[85%] flex flex-col md:flex-row items-center'>
           <div className='hidden md:flex md:w-1/2 justify-center'>
             <img src={repairHead} alt='Home Services' className='w-[80%] max-w-sm md:max-w-full h-auto' />
           </div>
-          <div className='md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left'>
-            <h2 className='font-bold text-3xl sm:text-4xl md:text-5xl text-amber-800'>
+          <div className='w-[95%] md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left'>
+            <h2 className='font-bold text-left text-3xl sm:text-4xl md:text-5xl text-amber-800'>
               We Provide Professional <br /> Home Services.
             </h2>
-            <p className='mt-5 text-lg'>We specialize in providing skilled, semi-skilled, and general workforce across various industries. Our expert manpower solutions ensure efficiency, productivity, and seamless operations for your business. Whether you need temporary, contract-based, or permanent staffing, we are here to support your workforce needs.</p>
+            <p className='mt-5 text-left text-md lg:text-lg'>We specialize in providing skilled, semi-skilled, and general workforce across various industries. Our expert manpower solutions ensure efficiency, productivity, and seamless operations for your business. Whether you need temporary, contract-based, or permanent staffing, we are here to support your workforce needs.</p>
             {/* <button className='bg-[#000000] mt-6 w-[200px] p-3 rounded-xl text-white font-bold'>Read More</button> */}
           </div>
         </div>
