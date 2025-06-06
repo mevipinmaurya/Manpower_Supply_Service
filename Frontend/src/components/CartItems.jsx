@@ -6,6 +6,7 @@ import { USER_API_ENDPOINT } from '../utils/Constants'
 import { setCartItems, setError, setLoading } from '../redux/cartSlice'
 import toast from 'react-hot-toast';
 import cart from "../assets/cart.png";
+import MapView from './MapView';
 
 const CartItems = () => {
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const CartItems = () => {
     const removeFromCart = async (id) => {
         try {
             const res = await axios.post(`${USER_API_ENDPOINT}/removefromcart`, {
-                userId: user.userId,
+                userId: user?.userId,
                 serviceId: id,
             }, { withCredentials: true });
 
@@ -34,13 +35,14 @@ const CartItems = () => {
 
     // Function for checkout Handling
     const checkoutHandler = async (amount) => {
-        // console.log(amount)
+        if (!user?.userId) {
+            toast.error("Please login to proceed with checkout.");
+            return;
+        }
         const { data: keyData } = await axios.get(`${USER_API_ENDPOINT}/getkey`);
         const { key } = keyData;
-        // console.log(key)
         const { data: orderData } = await axios.post(`${USER_API_ENDPOINT}/payment/process`, { amount })
         const { order } = orderData
-        // console.log(order)
 
         const options = {
             key,
@@ -51,9 +53,9 @@ const CartItems = () => {
             order_id: order.id,
             callback_url: 'http://localhost:3000/api/v1/user/payment/verification', // success URL
             prefill: {
-                name: 'Vipin Maurya',
-                email: 'vipinblogpsot@gmail.com',
-                contact: '6389441466'
+                name: user?.name || '',
+                email: user?.email || '',
+                contact: user?.contact || ''
             },
             theme: {
                 color: '#6E42E5'
@@ -62,7 +64,6 @@ const CartItems = () => {
 
         const rzp = new Razorpay(options);
         rzp.open();
-
     }
 
     useEffect(() => {
@@ -92,6 +93,17 @@ const CartItems = () => {
 
     const totalPrice = cartItems.reduce((acc, item) => acc + item.priceAtAddition, 0)
     const deliveryFee = 40
+
+    // Safely construct full address string or empty string if no address
+    const fullAddress = user?.address
+        ? [
+            user.address.street,
+            user.address.city,
+            user.address.state,
+            user.address.zip,
+            user.address.country,
+        ].filter(Boolean).join(', ')
+        : "";
 
     return (
         <div className='w-full px-4 md:px-10 mb-20 mt-10'>
@@ -166,8 +178,28 @@ const CartItems = () => {
                                     Apply
                                 </button>
                             </div>
-
                         </div>
+
+                        {/* Address Section */}
+                        {user?.address ? (
+                            <div className='w-full mt-8 bg-white p-6 rounded-lg shadow-md'>
+                                <h2 className='text-xl font-semibold mb-3 border-b pb-2'>Service Address</h2>
+                                <p className='text-gray-700 mb-4 leading-relaxed'>{fullAddress}</p>
+                                <div className='w-full h-[200px] rounded overflow-hidden shadow-inner'>
+                                    <MapView
+                                        address={{
+                                            street: user.address.street,
+                                            city: user.address.city,
+                                            state: user.address.state,
+                                            zip: user.address.zip,
+                                            country: user.address.country,
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                        ) : (
+                            <p className="mt-6 text-gray-500">No service address available.</p>
+                        )}
                     </div>
 
                     {/* Cart Totals */}
@@ -178,7 +210,7 @@ const CartItems = () => {
                             <h1 className='text-lg'>₹ {totalPrice}</h1>
                         </div>
                         <div className='flex border-b py-2 justify-between items-center'>
-                            <h1 className='text-lg'>Delivery Fee</h1>
+                            <h1 className='text-lg'>Service Fee</h1>
                             <h1 className='text-lg'>₹ {deliveryFee}</h1>
                         </div>
                         <div className='flex border-b py-2 justify-between items-center font-semibold'>
@@ -197,4 +229,4 @@ const CartItems = () => {
     )
 }
 
-export default CartItems
+export default CartItems;

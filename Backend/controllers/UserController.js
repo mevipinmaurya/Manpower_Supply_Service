@@ -1,48 +1,58 @@
-import User from "../models/userModel.js";
+import User from "../models/UserModel.js";
 import bcryptjs from "bcryptjs"
 import jwt from "jsonwebtoken"
 
 // User signup functionality
 const register = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
-        // Basic  validation
+        const { name, email, password, address } = req.body;
+
+        // Basic validation
         if (!name || !email || !password) {
             return res.status(401).json({
                 success: false,
-                message: "All fields are required"
-            })
+                message: "Name, email, and password are required"
+            });
         }
 
-        const match = await User.findOne({ email });
-        if (match) {
-            return res.status(500).json({
+        // Optional: You can validate address fields here if required
+        if (address && (!address.street || !address.city || !address.state || !address.zip || !address.country)) {
+            return res.status(400).json({
+                success: false,
+                message: "Incomplete address information"
+            });
+        }
+
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(409).json({
                 success: false,
                 message: "Email already registered"
-            })
+            });
         }
 
         const hashPass = await bcryptjs.hash(password, 10);
         const user = new User({
-            name: name,
-            email: email,
-            password: hashPass
-        })
+            name,
+            email,
+            password: hashPass,
+            address // automatically embedded from req.body
+        });
 
-        await user.save()
+        await user.save();
+
         return res.status(201).json({
             success: true,
             message: "Account created successfully"
-        })
-    }
-    catch (error) {
-        console.log(error)
-        return res.status(501).json({
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
             success: false,
-            message: "Some Error Occured"
-        })
+            message: "An error occurred during registration"
+        });
     }
-}
+};
 
 
 // Login Functionality
@@ -81,10 +91,17 @@ const login = async (req, res) => {
         return res.status(201).cookie("token", token, { expiresIn: "1d", httpOnly: true }).json({
             success: true,
             message: `Welcome back ${user.name}`,
-            user : {
-                userId : user._id,
-                email : user.email,
-                name : user.name
+            user: {
+                userId: user._id,
+                email: user.email,
+                name: user.name,
+                address : {
+                    street : user.address.street,
+                    city : user.address.city,
+                    state : user.address.state,
+                    pincode : user.address.zip,
+                    country : user.address.country
+                }
             },
             token,
         })
@@ -100,4 +117,4 @@ const login = async (req, res) => {
 
 
 
-export {register, login} 
+export { register, login } 
