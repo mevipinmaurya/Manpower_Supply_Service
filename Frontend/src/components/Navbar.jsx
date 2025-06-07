@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import logo from "../assets/logo1.svg";
+import mainlogo from "../assets/mainlogo.png";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Link as ScrollLink } from "react-scroll";
 import { useDispatch, useSelector } from 'react-redux';
 import { clearUser } from '../redux/userSlice';
 import { clearCart } from '../redux/cartSlice';
+// import mainlogo from '../assets/logo.png'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +28,9 @@ const Navbar = () => {
       <div className='flex justify-between items-center max-w-6xl mx-auto'>
         {/* Logo */}
         <div className='text-xl font-bold'>
-          <Link to={'/'} className='font-bold text-3xl text-[#000000] font-sans'>ManPower</Link>
+          <Link to={'/'} className='font-bold text-3xl text-[#000000] font-sans'>
+            <img src={mainlogo} alt="LOGO" width={180} height={180} />
+          </Link>
         </div>
 
         {/* Desktop Menu (Hidden on Small Screens) */}
