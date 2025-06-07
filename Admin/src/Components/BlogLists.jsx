@@ -5,7 +5,7 @@ import { FaEdit } from "react-icons/fa";
 import { toast } from 'react-hot-toast';
 
 const BlogLists = () => {
-    const URL = 'http://localhost:3000';
+    const URL = 'https://manpower-supply-service-1.onrender.com';
     const [list, setList] = useState([]);
     const [filteredList, setFilteredList] = useState([]);
     const [filter, setFilter] = useState('');
@@ -87,7 +87,7 @@ const BlogLists = () => {
         setImage(e.target.value);
     };
 
-    const url = "http://localhost:3000";
+    const url = "https://manpower-supply-service-1.onrender.com";
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");

@@ -51,7 +51,7 @@ const CartItems = () => {
             name: 'Manpower Service Supply',
             description: 'Manpower Service Supply Razorpay Integration',
             order_id: order.id,
-            callback_url: 'http://localhost:3000/api/v1/user/payment/verification', // success URL
+            callback_url: 'https://manpower-supply-service-1.onrender.com/api/v1/user/payment/verification', // success URL
             prefill: {
                 name: user?.name || '',
                 email: user?.email || '',

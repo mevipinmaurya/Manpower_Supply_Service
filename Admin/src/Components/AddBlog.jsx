@@ -3,7 +3,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast';
 
 const AddBlog = () => {
-    const url = "http://localhost:3000"
+    const url = "https://manpower-supply-service-1.onrender.com"
     const [image, setImage] = useState("");
     const imageHandler = (e) => {
         e.preventDefault()
