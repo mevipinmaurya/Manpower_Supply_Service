@@ -14,10 +14,9 @@
     "razorpay": "^2.9.6"
   },
   "scripts": {
-    "install": "npm install && npm install --prefix Frontend",
-    "build": "npm run build --prefix Frontend",
-    "dev": "nodemon Backend/index.js",
-    "start": "node Backend/index.js"
+    "dev" : "nodemon Backend/index.js",
+    "build": "npm install && npm install --prefix Frontend && npm run build --prefix Frontend",
+    "start" : "node Backend/index.js"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
