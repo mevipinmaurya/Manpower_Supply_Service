@@ -103,7 +103,7 @@ const contactusService = async (req, res) => {
         })
 
     } catch (error) {
-        console.log(error)
+        // console.log(error)
         res.json({
             success: false,
             message: "error during contactUs service!"
